@@ -1,3 +1,5 @@
 export default function SelectFiveRandomFromList() {
-    console.log("I am select list function")
+    console.log(text)
 }
+
+const text = "I am select list function"
