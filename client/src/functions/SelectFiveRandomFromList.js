@@ -1,4 +1,4 @@
-export default function SelectFiveRandomFromList() {
+export default function SelectFiveRandomFromList(listOfSongs) {
     const randomList = [];
     for (let i = 0; i < 5; i++) {
         const randomNum = Math.floor(Math.random() * 5);
@@ -7,16 +7,3 @@ export default function SelectFiveRandomFromList() {
     }
     console.log(randomList)
 }
-
-const listOfSongs = [
-    "Mr Brightside",
-    "Sam's Town",
-    "Jenny Was a Friend of Mine",
-    "Read My Mind",
-    "Bling",
-    "Human",
-    "Caution",
-    "Spaceman",
-    "When You Were Young",
-    "This River is wild"
-];
