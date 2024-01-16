@@ -1,5 +1,15 @@
 export default function SelectFiveRandomFromList() {
-    console.log(text[0])
+    console.log(listOfSongs[0])
 }
 
-const text = ["I am select list function",2,3,4,5];
+const listOfSongs = [
+    "Mr Brightside",
+    "Sam's Town",
+    "Jenny Was a Friend of Mine",
+    "Read My Mind",
+    "Bling",
+    "Human",
+    "Caution",
+    "Spaceman",
+    "When You Were Young",
+    "This River is wild"];
