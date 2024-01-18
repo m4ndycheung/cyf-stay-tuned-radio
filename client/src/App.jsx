@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -9,19 +9,24 @@ function App() {
   const [count, setCount] = useState(0);
   const [accessToken, setAccessToken] = useState(0);
 
-  async function getAccessToken() {
-    const tokenResult = await fetch("https://accounts.spotify.com/api/token", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
-    });
-    const accessTokenData = await tokenResult.json();
-    console.log(accessTokenData.access_token);
-  }
-  getAccessToken();
-
+  useEffect(() => {
+    async function getAccessToken() {
+      const tokenResult = await fetch(
+        "https://accounts.spotify.com/api/token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
+        }
+      );
+      const accessTokenData = await tokenResult.json();
+      setAccessToken(accessTokenData.access_token);
+    }
+    getAccessToken();
+  }, [CLIENT_ID, CLIENT_SECRET]);
+  console.log(accessToken);
   return (
     <>
       <div>
