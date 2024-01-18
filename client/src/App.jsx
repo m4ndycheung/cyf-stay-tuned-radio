@@ -5,26 +5,26 @@ import "./App.css";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
+  const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
   const [count, setCount] = useState(0);
 
-  // async function getAccessToken() {
-  //   const tokenResult = await fetch("https://accounts.spotify.com/api/token", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/x-www-form-urlencoded",
-  //     },
-  //     body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
-  //   });
-  //   const accessTokenData = await tokenResult.json();
-  //   console.log(accessTokenData);
-  // }
+  async function getAccessToken() {
+    const tokenResult = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
+    });
+    const accessTokenData = await tokenResult.json();
+    console.log(accessTokenData);
+  }
 
-  // getAccessToken();
+  getAccessToken();
 
   return (
     <>
       <div>
-        <p>{CLIENT_ID}</p>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
