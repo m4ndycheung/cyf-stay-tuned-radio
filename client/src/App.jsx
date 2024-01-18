@@ -26,7 +26,7 @@ function App() {
     }
     getAccessToken();
   }, [CLIENT_ID, CLIENT_SECRET]);
-  console.log(accessToken);
+
   return (
     <>
       <div>
@@ -38,6 +38,8 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <h2>Access Token:</h2>
+      <p>{accessToken}</p>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
