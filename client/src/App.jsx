@@ -7,6 +7,7 @@ function App() {
   const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
   const CLIENT_SECRET = import.meta.env.VITE_CLIENT_SECRET;
   const [count, setCount] = useState(0);
+  const [accessToken, setAccessToken] = useState(0);
 
   async function getAccessToken() {
     const tokenResult = await fetch("https://accounts.spotify.com/api/token", {
@@ -17,9 +18,8 @@ function App() {
       body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`,
     });
     const accessTokenData = await tokenResult.json();
-    console.log(accessTokenData);
+    console.log(accessTokenData.access_token);
   }
-
   getAccessToken();
 
   return (
