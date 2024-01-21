@@ -34,3 +34,6 @@ app.get("/login", function (req, res) {
   // this is the auth url. transfer to Spotify Login
   res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
+
+// getting the refresh token
+app.get("/callback", function (req, res) {});
