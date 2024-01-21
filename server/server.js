@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const initiateLogin = require("./initiateLogin");
+const initiateLogin = require("./modules/initiateLogin");
 
 const PORT = process.env.PORT || 3001;
 

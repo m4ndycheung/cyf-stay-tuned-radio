@@ -15,7 +15,7 @@ const initiateLogin = (req, res) => {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  // Go to docs to know which scopes you need
+  // Go to docs to know which scopes are needed
   const scope =
     "user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public";
 
