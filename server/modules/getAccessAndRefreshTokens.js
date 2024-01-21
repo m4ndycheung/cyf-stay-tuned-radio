@@ -31,6 +31,8 @@ const getAccessAndRefreshTokens = async function (req, res) {
   console.log(`expires in: ${expires_in}`);
   console.log(`token type: ${token_type}`);
   console.log(`refresh token: ${refresh_token}`);
+
+  res.send(tokenData);
 };
 
 module.exports = getAccessAndRefreshTokens;
