@@ -24,7 +24,13 @@ const getAccessAndRefreshTokens = async function (req, res) {
   });
   const tokenData = await tokenResponse.json();
 
-  console.log(tokenData);
+  const { access_token, token_type, expires_in, refresh_token, scope } =
+    tokenData;
+
+  console.log(`access token: ${access_token}`);
+  console.log(`expires in: ${expires_in}`);
+  console.log(`token type: ${token_type}`);
+  console.log(`refresh token: ${refresh_token}`);
 };
 
 module.exports = getAccessAndRefreshTokens;
