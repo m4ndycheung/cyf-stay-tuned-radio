@@ -4,7 +4,7 @@ const querystring = require("querystring");
 const CLIENT_ID = process.env.CLIENT_ID;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
-const initiateLogin = (req, res) => {
+const initiateLogin = function (req, res) {
   console.log(CLIENT_ID);
   const generateRandomString = (length) => {
     return crypto.randomBytes(60).toString("hex").slice(0, length);
