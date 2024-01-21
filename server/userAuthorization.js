@@ -21,7 +21,7 @@ app.get("/login", function (req, res) {
 
   // go to docs to know which scopes you need
   const scope =
-    "user-read-private user-read-email playlist-read-private playlist-modify-public";
+    "user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public";
 
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
