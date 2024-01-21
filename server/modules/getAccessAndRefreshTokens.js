@@ -6,7 +6,6 @@ const getAccessAndRefreshTokens = async function (req, res) {
   const CLIENT_ID = process.env.CLIENT_ID;
   const CLIENT_SECRET = process.env.CLIENT_SECRET;
   const code = req.query.code || null;
-  //   console.log(`client id: ${CLIENT_ID}`);
 
   const tokenResponse = await fetch(TOKEN_URL, {
     method: "POST",

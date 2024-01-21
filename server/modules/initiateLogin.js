@@ -15,11 +15,9 @@ const initiateLogin = function (req, res) {
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 
-  // Go to docs to know which scopes are needed
   const scope =
     "user-read-private user-read-email playlist-read-private playlist-modify-private playlist-modify-public";
 
-  // querystring.stringify() method produces a URL query string from a given obj by iterating through the object's "own properties".
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type: "code",
@@ -28,7 +26,6 @@ const initiateLogin = function (req, res) {
     scope: scope,
   });
 
-  // This is the auth url. transfer to Spotify Login
   res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 };
 
