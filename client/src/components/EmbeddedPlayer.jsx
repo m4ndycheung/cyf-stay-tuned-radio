@@ -7,7 +7,7 @@ const EmbeddedPlayer = () => {
       const options = {
         width: "100%",
         height: "400",
-        uri: "spotify:playlist:2RoQkVgIhgQmCZadrMoDLd",
+        uri: "spotify:playlist:7ML1iO1h2gFyjwYUkzcOGK",
       };
 
       const callback = (EmbedController) => {
