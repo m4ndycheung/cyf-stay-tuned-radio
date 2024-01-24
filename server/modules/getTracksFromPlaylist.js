@@ -5,4 +5,6 @@ const getTracksFromPlaylist = async function (access_token, playlist_id) {
           "Authorization": `Bearer ${access_token}`
         }
       });
+      const getTracksResponse = await getTracksRequest.json();
+      return getTracksResponse
   }
