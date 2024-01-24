@@ -8,3 +8,5 @@ const getTracksFromPlaylist = async function (access_token, playlist_id) {
       const getTracksResponse = await getTracksRequest.json();
       return getTracksResponse
   }
+
+  module.exports = getTracksFromPlaylist
