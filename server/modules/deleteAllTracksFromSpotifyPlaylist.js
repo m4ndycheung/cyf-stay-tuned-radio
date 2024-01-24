@@ -1,7 +1,8 @@
-import getTracksFromPlaylist from "./getTracksFromPlaylist";
+import getPlaylistData from "./getPlaylistData";
 import createDeleteTrackArray from "./createDeleteTrackArray";
+import deleteTracksFromPlaylist from "./deleteTracksFromPlaylist";
 
 const deleteAllTracksFromSpotifyPlaylist = async function(access_token, track_id) {
-    const playlistTrackArray = await getTracksFromPlaylist(access_token, track_id)
-    const deleteArray = createDeleteTrackArray(playlistTrackArray)
+    const playlistData = await getTracksFromPlaylist(access_token, track_id)
+    const deleteArray = createDeleteTrackArray(playlistData)
 }
