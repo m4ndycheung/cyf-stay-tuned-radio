@@ -13,4 +13,6 @@ async function deleteTracksFromPlaylist(playlist_id, access_token, snapshot_id, 
             snapshot_id: snapshot_id
         })
     })
+    const deleteTracksResponse = await deleteTracksFromPlaylist.JSON()
+    return deleteTracksResponse
 }
