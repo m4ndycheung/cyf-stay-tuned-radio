@@ -7,11 +7,18 @@ const apiCallToGetSongsFromDb = require("./modules/apiCallToGetSongsFromDb");
 
 const PORT = process.env.PORT || 3001;
 
+const bodyParser = require("body-parser");
+
+const dotenv = require("dotenv");
+
+dotenv.config();
+
 const app = express();
 
 app.use(express.json());
-
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
