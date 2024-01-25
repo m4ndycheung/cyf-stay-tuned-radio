@@ -1,4 +1,4 @@
-const deleteTracksFromPlaylist = async function (playlist_id, access_token, snapshot_id, songsToDelURIArray) {
+const deleteTracksFromPlaylist = async function (access_token, playlist_id, snapshot_id, songsToDelURIArray) {
     const deleteTracksRequest = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}/tracks`, {
         method: "DELETE",
         headers: {
