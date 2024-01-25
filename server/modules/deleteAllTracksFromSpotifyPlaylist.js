@@ -7,4 +7,5 @@ const deleteAllTracksFromSpotifyPlaylist = async function(access_token, playlist
     const snapshot_id = playlistData.snapshot_id
     const tracksArray = playlistData.tracks.items
     const deleteArray = createDeleteTrackArray(tracksArray)
+    const deleteAllTracksRequest = await deleteTracksFromPlaylist(access_token, playlist_id, snapshot_id, deleteArray)
 }
