@@ -3,7 +3,7 @@ const createDeleteTrackArray = function (tracksArrayInput) {
     tracksArrayInput.map((track) => {
         const trackObject = {}
         trackObject.uri = track.track.uri
-        arrayOfObjects.push(trackObject)
+        deleteTrackArray.push(trackObject)
     })
     return deleteTrackArray
 }
