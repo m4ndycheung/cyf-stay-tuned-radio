@@ -1,12 +1,12 @@
 const getPlaylistData = async function (access_token, playlist_id) {
-    const getTracksRequest = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
+    const getPlaylistRequest = await fetch(`https://api.spotify.com/v1/playlists/${playlist_id}`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${access_token}`
         }
       });
-      const getTracksResponse = await getTracksRequest.json();
-      return getTracksResponse
+      const getPlaylistResponse = await getTracksRequest.json();
+      return getPlaylistResponse
   }
 
   module.exports = getPlaylistData
