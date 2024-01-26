@@ -1,4 +1,4 @@
-const addTracksToPlaylist = async function (access_token) {
+const addTracksToPlaylist = async function (access_token, addTracksArray) {
   const playlistID = "7ML1iO1h2gFyjwYUkzcOGK";
 
   const addTracksRequest = await fetch(
@@ -10,14 +10,8 @@ const addTracksToPlaylist = async function (access_token) {
         Authorization: `Bearer ${access_token}`,
       },
       body: JSON.stringify({
-        uris: [
-          "spotify:track:0zjB7ewBWnMgQDMQpFzt92",
-          "spotify:track:7Gjj6NxSsVwXfOXUjvjCXv",
-          "spotify:track:3dxiWIBVJRlqh9xk144rf4",
-          "spotify:track:7KXjTSCq5nL1LoYtL7XAwS",
-          "spotify:track:1LJrvnqxW78EIevakMEpZa",
-          "spotify:track:7IUl5c6u18rzmyQOblj10T",
-        ],
+        // We'll create this array when we extract song IDs from the DB
+        uris: addTracksArray,
       }),
     }
   );
