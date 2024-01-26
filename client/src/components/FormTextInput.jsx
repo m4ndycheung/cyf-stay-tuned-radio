@@ -1,6 +1,9 @@
 const FormTextInput = () => {
+    const label = "test"
     return (
-        <p>I am a FormTextInput Component</p>
+    <>
+        <label for={label}>{label}: </label><input type="text" id={label}/>
+    </>
     )
 }
 
