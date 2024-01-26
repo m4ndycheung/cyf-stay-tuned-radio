@@ -1,8 +1,7 @@
-const FormTextInput = () => {
-    const label = "test"
+const FormTextInput = ({ inputName }) => {
     return (
     <>
-        <label for={label}>{label}: </label><input type="text" id={label}/>
+        <label for={inputName}>{inputName}: </label><input type="text" id={inputName}/>
     </>
     )
 }
