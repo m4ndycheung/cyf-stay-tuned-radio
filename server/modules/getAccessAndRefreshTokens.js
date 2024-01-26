@@ -1,5 +1,4 @@
 const querystring = require("querystring");
-const addTracksToPlaylist = require("./addTracksToPlaylist");
 
 const getAccessAndRefreshTokens = async function (req, res) {
   const TOKEN_URL = "https://accounts.spotify.com/api/token";
@@ -32,7 +31,6 @@ const getAccessAndRefreshTokens = async function (req, res) {
   console.log(`token type: ${token_type}`);
   console.log(`refresh token: ${refresh_token}`);
 
-  addTracksToPlaylist(access_token);
   res.send(tokenData);
 };
 
