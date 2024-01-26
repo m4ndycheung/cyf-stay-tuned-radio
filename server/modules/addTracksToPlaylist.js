@@ -1,6 +1,6 @@
 // To test this function, we need an addTracksArray
 // We also need to require this function in getAccessAndRefreshTokens
-// Then invoke the function passing through the access_token
+// Then invoke the function passing through the access_token (and the trackIDsToAddArray when ready)
 
 const addTracksToPlaylist = async function (access_token, trackIDsToAddArray) {
   const playlistID = "7ML1iO1h2gFyjwYUkzcOGK";
