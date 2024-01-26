@@ -21,6 +21,7 @@ const addTracksToPlaylist = async function (access_token) {
   );
   const trackResponse = await addTracksRequest.json();
   console.log(trackResponse);
+  return trackResponse;
 };
 
 module.exports = addTracksToPlaylist;
