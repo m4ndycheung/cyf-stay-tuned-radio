@@ -29,6 +29,9 @@ function App() {
         </a>
       </div>
       <EmbeddedPlayer />
+      <FormTextInput inputName="Artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput inputName="Track Title" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput inputName="Spotify URL" handleChangeEventFormInput={handleChangeEventFormInput}/>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
