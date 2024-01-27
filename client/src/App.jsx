@@ -8,6 +8,15 @@ import FormTextInput from "./components/FormTextInput";
 function App() {
   const [count, setCount] = useState(0);
   const [formData, setFormData] = useState({});
+
+  function handleChangeEventFormInput(key, value) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [key]: value
+      };
+    })
+  }
   
   return (
     <>

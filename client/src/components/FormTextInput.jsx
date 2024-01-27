@@ -1,13 +1,7 @@
-const FormTextInput = ({ inputName }) => {
-    function test() {
-        const formDataObject = {}
-        const name = event.target.id
-        formDataObject[name] = event.target.value
-        console.log(formDataObject)
-    }
+const FormTextInput = ({ inputName, handleChangeEventFormInput }) => {
     return (
     <>
-        <label for={inputName}>{inputName}: </label><input type="text" id={inputName} onChange={test}/>
+        <label for={inputName}>{inputName}: </label><input type="text" id={inputName} onChange={() => handleChangeEventFormInput(event.target.id, event.target.value)}/>
     </>
     )
 }
