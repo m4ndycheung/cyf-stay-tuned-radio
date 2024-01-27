@@ -4,6 +4,7 @@ const cors = require("cors");
 const initiateLogin = require("./modules/initiateLogin");
 const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
 const apiCallToGetSongsFromDb = require("./modules/apiCallToGetSongsFromDb");
+const getRandomSongsFromDB = require("./modules/getRandomSongsFromDB");
 
 const PORT = process.env.PORT || 3001;
 
@@ -19,7 +20,6 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
@@ -31,3 +31,4 @@ app.listen(PORT, () => {
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
 app.get("/", apiCallToGetSongsFromDb);
+app.get("/test", getRandomSongsFromDB);
