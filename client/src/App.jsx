@@ -4,9 +4,11 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import EmbeddedPlayer from "./components/EmbeddedPlayer";
 import FormTextInput from "./components/FormTextInput";
+
 function App() {
   const [count, setCount] = useState(0);
-
+  const [formData, setFormData] = useState({});
+  
   return (
     <>
       <div>
@@ -18,7 +20,6 @@ function App() {
         </a>
       </div>
       <EmbeddedPlayer />
-      <FormTextInput />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
