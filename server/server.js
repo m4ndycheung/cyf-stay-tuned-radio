@@ -23,9 +23,9 @@ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
 
-// app.get("/", function (req, res) {
-//   res.send("Hello World");
-// });
+app.get("/", function (req, res) {
+  res.send("Hello World");
+});
 
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);

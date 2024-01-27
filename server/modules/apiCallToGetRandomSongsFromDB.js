@@ -12,38 +12,31 @@ const db = new Pool({
 const apiCallToGetRandomSongsFromDB = function (req, res) {
   db.query("SELECT * FROM tracks")
     .then((result) => {
-      // console.log(result.rows);
       const data = result.rows;
-
-      // res.send(result.json());
-      //   console.log(data.length);
 
       const selectRandomFromList = function (inputArray, amount) {
         const randomList = [];
         for (let i = 0; randomList.length < amount; i++) {
           const randomNum = Math.floor(Math.random() * inputArray.length);
-          //   console.log(randomNum);
           if (!randomList.includes(inputArray[randomNum])) {
             randomList.push(inputArray[randomNum]);
           }
         }
 
-        //      The array should look like this:
-        //      ["Spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"]
-
+        //  The array should look like this:
+        //  ["Spotify:track:4iV5W9uYEdYUVa79Axb7Rh","spotify:track:1301WleyT98MSxVHPZCA6M"]
         const trackIDsToAddArray = [];
 
         randomList.map((item) => {
           const newString = `Spotify:track:${item.spotify_song_id}`;
-          //   console.log(newString);
           trackIDsToAddArray.push(newString);
         });
+        console.log(`hello`);
         console.log(trackIDsToAddArray);
-        // return randomList;
+        return trackIDsToAddArray;
       };
 
-      console.log(selectRandomFromList(data, 3));
-      // return result.rows;
+      selectRandomFromList(data, 3);
     })
     .catch((err) => {
       console.error(err);
