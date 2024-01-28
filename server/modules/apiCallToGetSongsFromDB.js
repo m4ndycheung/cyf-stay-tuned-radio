@@ -14,6 +14,7 @@ const apiCallToGetSongsFromDB = function (req, res) {
     .then((result) => {
       console.log(result.rows);
       res.status(200).json(result.rows);
+      // return result.rows;
     })
     .catch((err) => {
       console.error(err);
