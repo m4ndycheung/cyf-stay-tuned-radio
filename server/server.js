@@ -31,3 +31,7 @@ app.listen(PORT, () => {
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
 app.get("/", apiCallToGetSongsFromDb);
+app.post("/songs/add", (req, res) => {
+  console.log(req.body)
+  res.send(req.body)
+})
