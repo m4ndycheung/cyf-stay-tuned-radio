@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const initiateLogin = require("./modules/initiateLogin");
 const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
-const apiCallToGetSongsFromDb = require("./modules/apiCallToGetSongsFromDb");
+const apiCallToGetSongsFromDB = require("./modules/apiCallToGetSongsFromDB");
 // const apiCallToGetRandomSongsFromDB = require("./modules/apiCallToGetRandomSongsFromDB");
 
 const PORT = process.env.PORT || 3001;
@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 const bodyParser = require("body-parser");
 
 const dotenv = require("dotenv");
+const apiCallToGetRandomSongsFromDB = require("./modules/apiCallToGetRandomSongsFromDB");
 
 dotenv.config();
 
@@ -30,5 +31,6 @@ app.get("/", function (req, res) {
 
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
-app.get("/database/tracks", apiCallToGetSongsFromDb)
+app.get("/songs", apiCallToGetSongsFromDB)
+app.get("/songs/random", apiCallToGetRandomSongsFromDB)
 // app.get("/getRandomSongsDB", apiCallToGetRandomSongsFromDB);
