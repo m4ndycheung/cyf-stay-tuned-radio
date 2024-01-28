@@ -8,6 +8,7 @@ import FormTextInput from "./components/FormTextInput";
 function App() {
   const [count, setCount] = useState(0);
   const [formData, setFormData] = useState({});
+  const server_url = import.meta.env.VITE_SERVER_URL;
 
   function handleChangeEventFormInput(key, value) {
     setFormData((prevFormData) => {
@@ -19,7 +20,7 @@ function App() {
   }
 
   function submitFormData() {
-    console.log(formData)
+    console.log(formData, server_url)
   }
   
   return (
