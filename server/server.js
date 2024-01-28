@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const initiateLogin = require("./modules/initiateLogin");
 const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
+const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAccessToken");
 
 const PORT = process.env.PORT || 3001;
 
@@ -17,3 +18,4 @@ app.get("/", function (req, res) {
 
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
+app.get("/refresh_token", exchangeRefreshForAccessToken);
