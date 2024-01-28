@@ -6,7 +6,11 @@ const selectRandomFromList = function (inputArray, amount) {
       randomList.push(inputArray[randomNum]);
     }
   }
-  return randomList;
+  //data needs to be in the format of array of strings. The string format needs to be in the format of: spotify:track:track_id
+  const randomListFormtted = randomList.map((item) => {
+    return `spotify:track:${item.spotify_song_id}`
+  })
+  return randomListFormtted;
 };
 
 module.exports = selectRandomFromList;
