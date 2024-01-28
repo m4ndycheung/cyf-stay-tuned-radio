@@ -19,8 +19,15 @@ function App() {
     })
   }
 
-  function submitFormData() {
+  async function submitFormData() {
     console.log(formData, server_url)
+    const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
   }
   
   return (
@@ -34,9 +41,9 @@ function App() {
         </a>
       </div>
       <EmbeddedPlayer />
-      <FormTextInput inputName="Artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
-      <FormTextInput inputName="Track Title" handleChangeEventFormInput={handleChangeEventFormInput}/>
-      <FormTextInput inputName="Spotify URL" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput inputName="Artist" inputID="artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput inputName="Track Title" inputID="track_title" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput inputName="Spotify URL" inputID="spotify_url" handleChangeEventFormInput={handleChangeEventFormInput}/>
       <button onClick={submitFormData}>Submit</button>
       <h1>Vite + React</h1>
       <div className="card">

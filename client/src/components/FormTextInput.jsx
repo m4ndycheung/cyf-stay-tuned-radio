@@ -1,7 +1,7 @@
-const FormTextInput = ({ inputName, handleChangeEventFormInput }) => {
+const FormTextInput = ({ inputName, inputID, handleChangeEventFormInput }) => {
     return (
     <>
-        <label for={inputName}>{inputName}: </label><input type="text" id={inputName} onChange={() => handleChangeEventFormInput(event.target.id, event.target.value)}/>
+        <label for={inputID}>{inputName}: </label><input type="text" id={inputID} onChange={() => handleChangeEventFormInput(event.target.id, event.target.value)}/>
     </>
     )
 }
