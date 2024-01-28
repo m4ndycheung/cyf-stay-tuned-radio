@@ -9,12 +9,12 @@ const db = new Pool({
   ssl: true,
 });
 
-const apiCall = function (req, res) {
+const apiCallToGetSongsFromDB = function (req, res) {
   db.query("SELECT * FROM tracks")
     .then((result) => {
       console.log(result.rows);
-      // res.status(200).json(result.rows);
-      return result.rows;
+      res.status(200).json(result.rows);
+      // return result.rows;
     })
     .catch((err) => {
       console.error(err);
@@ -22,4 +22,4 @@ const apiCall = function (req, res) {
     });
 };
 
-module.exports = apiCall;
+module.exports = apiCallToGetSongsFromDB;
