@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const initiateLogin = require("./modules/initiateLogin");
 const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
+const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAccessToken");
 const apiCallToGetSongsFromDb = require("./modules/apiCallToGetSongsFromDb");
 
 const PORT = process.env.PORT || 3001;
@@ -30,4 +31,5 @@ app.listen(PORT, () => {
 
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
+app.get("/refresh_token", exchangeRefreshForAccessToken);
 app.get("/", apiCallToGetSongsFromDb);
