@@ -1,6 +1,7 @@
 const querystring = require("querystring");
 const { Pool } = require("pg");
 
+
 const getAccessAndRefreshTokens = async function (req, res) {
   const TOKEN_URL = "https://accounts.spotify.com/api/token";
   const REDIRECT_URI = process.env.REDIRECT_URI;
@@ -49,13 +50,12 @@ const getAccessAndRefreshTokens = async function (req, res) {
   });
   const tokenData = await tokenResponse.json();
 
+  // object destructuring to easily access object data
   const { access_token, token_type, expires_in, refresh_token, scope } =
     tokenData;
 
-  console.log(`access token: ${access_token}`);
-  console.log(`expires in: ${expires_in}`);
-  console.log(`token type: ${token_type}`);
-  console.log(`refresh token: ${refresh_token}`);
+  console.log(access_token);
+  console.log(refresh_token);
 
   // store refresh token in DB
   storeRefreshTokenInDB(refresh_token);
