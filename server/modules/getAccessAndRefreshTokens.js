@@ -21,7 +21,7 @@ const getAccessAndRefreshTokens = async function (req, res) {
   // store the refresh token in DB instead of console logging it
   const storeRefreshTokenInDB = async function (refresh_token) {
     pool.query(
-      "INSERT INTO refresh_tokens_table (id, refresh_token) VALUES (1, $1) ON CONFLICT (id) DO UPDATE SET refresh_token = $1",
+      "UPDATE refresh_tokens_table SET refresh_token = $1 WHERE id = 1",
       [refresh_token],
       (error, result) => {
         if (error) {
