@@ -4,6 +4,7 @@ const cors = require("cors");
 const initiateLogin = require("./modules/initiateLogin");
 const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
 const apiCallToGetSongsFromDb = require("./modules/apiCallToGetSongsFromDb");
+const apiCallToAddSongsToDB = require("./modules/apiCallToAddSongsToDB")
 
 const PORT = process.env.PORT || 3001;
 
@@ -31,7 +32,4 @@ app.listen(PORT, () => {
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
 app.get("/", apiCallToGetSongsFromDb);
-app.post("/songs/add", (req, res) => {
-  console.log(req.body)
-  res.send(req.body)
-})
+app.post("/songs/add", apiCallToAddSongsToDB)
