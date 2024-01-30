@@ -23,3 +23,5 @@ const getRefreshAndUpdatePlaylist = async function (req, res) {
 };
 
 module.exports = getRefreshAndUpdatePlaylist;
+
+// we are calling the end points and not the functions themselves as we need it in an array format which is then translated into a .json format - which is the necessary format for the fetch response
