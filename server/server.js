@@ -6,6 +6,8 @@ const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens")
 const apiCallToGetSongsFromDB = require("./modules/apiCallToGetSongsFromDB");
 const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAccessToken");
 const authenticationWithSlack = require("./modules/authenticationWithSlack");
+const exchangeAccessCodeWithSlack = require("./modules/exchangeAccessCodeWithSlack");
+
 const PORT = process.env.PORT || 3001;
 
 const bodyParser = require("body-parser");
@@ -35,3 +37,4 @@ app.get("/songs", apiCallToGetSongsFromDB);
 app.get("/songs/random", apiCallToGetRandomSongsFromDB);
 app.get("/refresh_token", exchangeRefreshForAccessToken);
 app.get("/slack-sign-in", authenticationWithSlack);
+app.get("/slack-callback", exchangeAccessCodeWithSlack);

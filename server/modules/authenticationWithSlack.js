@@ -1,5 +1,3 @@
-const { WebClient } = require("@slack/web-api"); // requires v6.4 or higher
-const jwt = require("jsonwebtoken");
 const uuid = require("uuid");
 const querystring = require("querystring");
 
@@ -47,8 +45,8 @@ const authenticationWithSlack = async function (_, res) {
     redirect_uri: slack_redirect_uri,
     state: state,
     scope: scope,
-    redirect_uri: process.env.SLACK_REDIRECT_URI,
   });
+  console.log(queryParams);
   res.redirect(`https://slack.com/openid/connect/authorize?${queryParams}`);
 };
 
