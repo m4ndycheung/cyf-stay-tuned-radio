@@ -7,13 +7,13 @@ const client = new WebClient();
 const slack_client_id = process.env.SLACK_CLIENT_ID;
 const slack_client_secret = process.env.SLACK_CLIENT_SECRET;
 //const REDIRECT_URI = process.env.REDIRECT_URI;
-const scope = "openid,email,profile";
+//const scope = "openid,email,profile";
 
 const exchangeAccessCodeWithSlack = async function (req, res) {
   const state = req.query.state;
-  if (!state || !authenticationWithSlack.validate(state)) {
-    return res.status(400).send("Invalid state parameter");
-  }
+  // if (!state || !authenticationWithSlack.validate(state)) {
+  //   return res.status(400).send("Invalid state parameter");
+  // }
 
   try {
     const code = req.query.code;
@@ -22,7 +22,7 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
       client_secret: slack_client_secret,
       grant_type: "authorization_code",
       // redirect_uri: REDIRECT_URI,
-      code,
+      code: code,
     });
     console.log(client);
     console.log(code);
@@ -31,6 +31,7 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     const tokenWiredClient = new WebClient(userAccessToken);
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
     console.log(userInfo);
+    res.send(userInfo);
   } catch (error) {
     console.error("Error exchanging code for token:", error);
     res.status(500).send("Internal Server Error");

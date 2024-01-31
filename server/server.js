@@ -37,4 +37,4 @@ app.get("/songs", apiCallToGetSongsFromDB);
 app.get("/songs/random", apiCallToGetRandomSongsFromDB);
 app.get("/refresh_token", exchangeRefreshForAccessToken);
 app.get("/slack-sign-in", authenticationWithSlack);
-app.get("/slack-callback", exchangeAccessCodeWithSlack);
+app.get("/slack/oauth_redirect", exchangeAccessCodeWithSlack);
