@@ -1,6 +1,7 @@
 const { WebClient } = require("@slack/web-api"); // requires v6.4 or higher
 const jwt = require("jsonwebtoken");
 const uuid = require("uuid");
+const querystring = require("querystring");
 
 const slack_client_id = process.env.SLACK_CLIENT_ID;
 const slack_client_secret = process.env.SLACK_CLIENT_SECRET;
@@ -37,3 +38,18 @@ function createIdentifier() {
 }
 
 const myIdentifier = createIdentifier();
+
+const authenticationWithSlack = async function (_, res) {
+  const state = await myIdentifier.generate();
+  const queryParams = querystring.stringify({
+    client_id: slack_client_id,
+    response_type: "code",
+    redirect_uri: slack_redirect_uri,
+    state: state,
+    scope: scope,
+    redirect_uri: process.env.SLACK_REDIRECT_URI,
+  });
+  res.redirect(`https://slack.com/openid/connect/authorize?${queryParams}`);
+};
+
+module.exports = authenticationWithSlack;
