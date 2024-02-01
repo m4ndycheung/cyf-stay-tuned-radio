@@ -21,6 +21,12 @@ const apiCallToAddSongsToDB = function(req, res) {
     .then(() => {
         res.status(201).send();
       })
+      .catch((err) => {
+        console.log(err);
+        res
+          .status(400)
+          .send({ result: "failure", message: "Video could not be saved" });
+      });
 }
 
 module.exports = apiCallToAddSongsToDB
