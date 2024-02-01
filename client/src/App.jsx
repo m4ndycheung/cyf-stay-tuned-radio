@@ -20,7 +20,6 @@ function App() {
   }
 
   async function submitFormData() {
-    console.log(formData, server_url)
     const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
       method: "POST",
       headers: {
@@ -29,7 +28,6 @@ function App() {
       body: JSON.stringify(formData)
     })
     const response = await sendSongsToDB.json()
-    console.log(response.result)
     alert(response.result)
   }
   
