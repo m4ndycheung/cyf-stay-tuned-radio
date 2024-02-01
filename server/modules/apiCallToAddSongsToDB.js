@@ -10,8 +10,12 @@ const apiCallToAddSongsToDB = function(req, res) {
         ssl: true,
       });
 
-    console.log(req.body)
-    res.send(req.body)
+      const artist = req.body.artist
+      const song_title = req.body.song_title
+      const spotify_url = req.body.spotify_url
+
+    console.log(artist, song_title, spotify_url)
+    res.send(artist, song_title, spotify_url)
 }
 
 module.exports = apiCallToAddSongsToDB
