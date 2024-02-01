@@ -1,13 +1,10 @@
 const { WebClient } = require("@slack/web-api");
 const authenticationWithSlack = require("./authenticationWithSlack");
-//const jwt = require("jsonwebtoken");
 
 const client = new WebClient();
 
 const slack_client_id = process.env.SLACK_CLIENT_ID;
 const slack_client_secret = process.env.SLACK_CLIENT_SECRET;
-//const REDIRECT_URI = process.env.REDIRECT_URI;
-//const scope = "openid,email,profile";
 
 const exchangeAccessCodeWithSlack = async function (req, res) {
   const state = req.query.state;
@@ -21,11 +18,8 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
       client_id: slack_client_id,
       client_secret: slack_client_secret,
       grant_type: "authorization_code",
-      // redirect_uri: REDIRECT_URI,
       code: code,
     });
-    console.log(client);
-    console.log(code);
     console.log("My token is:", token);
     let userAccessToken = token.access_token;
     const tokenWiredClient = new WebClient(userAccessToken);
