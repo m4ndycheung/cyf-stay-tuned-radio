@@ -42,7 +42,7 @@ function App() {
       </div>
       <EmbeddedPlayer />
       <FormTextInput inputName="Artist" inputID="artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
-      <FormTextInput inputName="Track Title" inputID="track_title" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput inputName="Song Title" inputID="song_title" handleChangeEventFormInput={handleChangeEventFormInput}/>
       <FormTextInput inputName="Spotify URL" inputID="spotify_url" handleChangeEventFormInput={handleChangeEventFormInput}/>
       <button onClick={submitFormData}>Submit</button>
       <h1>Vite + React</h1>
