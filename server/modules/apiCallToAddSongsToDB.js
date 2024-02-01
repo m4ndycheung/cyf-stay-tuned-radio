@@ -15,6 +15,12 @@ const apiCallToAddSongsToDB = function(req, res) {
     const spotify_url = req.body.spotify_url
     const re = /(?!track\/)([a-zA-Z0-9]){22}/
     const spotify_song_id = re.exec(spotify_url)[0]
+    const query = `INSERT INTO tracks (artist_name, song_name, spotify_song_id) VALUES ($1, $2, $3)`;
+
+    db.query(query, [artist_name, song_name, spotify_song_id])
+    .then(() => {
+        res.status(201).send();
+      })
 }
 
 module.exports = apiCallToAddSongsToDB
