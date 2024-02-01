@@ -19,7 +19,7 @@ const apiCallToAddSongsToDB = function(req, res) {
 
     db.query(query, [artist_name, song_name, spotify_song_id])
     .then(() => {
-        res.status(201).send();
+        res.status(201).send({result: "song added successfully, enjoy!"});
       })
       .catch((err) => {
         console.log(err);
