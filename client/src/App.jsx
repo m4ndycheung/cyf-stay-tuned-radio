@@ -28,6 +28,9 @@ function App() {
       },
       body: JSON.stringify(formData)
     })
+    const response = await sendSongsToDB.json()
+    console.log(response.result)
+    alert(response.result)
   }
   
   return (
