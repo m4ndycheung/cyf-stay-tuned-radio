@@ -6,8 +6,8 @@ const searchForSongsOnSpotify = async function (req, res) {
   const requestRefreshToken = await fetch(`${serverURL}/refresh_token`);
   const newTokenObject = await requestRefreshToken.json();
   const newAccessToken = newTokenObject.access_token;
-  //   console.log(`New access token: ${newAccessToken}`);
 
+  console.log(req.query);
   res.send(newAccessToken);
 };
 module.exports = searchForSongsOnSpotify;
