@@ -29,7 +29,7 @@ const searchForSongsOnSpotify = async function (req, res) {
     }
   );
 
-  const searchResponse = await searchRequest;
+  const searchResponse = await searchRequest.json();
 
   res.send(searchResponse);
 };
