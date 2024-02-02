@@ -8,7 +8,14 @@ const searchForSongsOnSpotify = async function (req, res) {
   const newTokenObject = await requestRefreshToken.json();
   const newAccessToken = newTokenObject.access_token;
 
-  const queryParams = req.query;
+  const { q, type, limit } = req.query;
+
+  const queryParams = querystring.stringify({
+    q: q,
+    type: type,
+    limit: limit,
+  });
+
   console.log(queryParams);
 
   const searchRequest = await fetch(
