@@ -40,7 +40,7 @@ const searchForSongsOnSpotify = async function (req, res) {
     const uriArray = [];
 
     for (const item of data) {
-      console.log(item.uri);
+      uriArray.push(item.uri);
     }
     return uriArray;
   }
