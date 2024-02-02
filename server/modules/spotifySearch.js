@@ -1,3 +1,4 @@
+const { query } = require("express");
 const querystring = require("querystring");
 
 const searchForSongsOnSpotify = async function (req, res) {
@@ -7,7 +8,22 @@ const searchForSongsOnSpotify = async function (req, res) {
   const newTokenObject = await requestRefreshToken.json();
   const newAccessToken = newTokenObject.access_token;
 
-  console.log(req.query);
-  res.send(newAccessToken);
+  const queryParams = req.query;
+  console.log(queryParams);
+
+  const searchRequest = await fetch(
+    `https://api.spotify.com/v1/search?${queryParams}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${newAccessToken}`,
+      },
+    }
+  );
+
+  const searchResponse = await searchRequest;
+
+  res.send(searchResponse);
 };
 module.exports = searchForSongsOnSpotify;
