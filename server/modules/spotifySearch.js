@@ -29,9 +29,24 @@ const searchForSongsOnSpotify = async function (req, res) {
     }
   );
 
+  // spotify returns a response that looks wild
+  // .json() parses the response into a JS object
   const searchResponse = await searchRequest.json();
 
-  const searchItems = searchResponse.tracks;
+  // extract items array from tracks
+  const searchItems = searchResponse.tracks.items;
+
+  function getTrackURIs(data) {
+    const uriArray = [];
+
+    for (const item of data) {
+      console.log(item.uri);
+    }
+    return uriArray;
+  }
+
+  const trackURIs = getTrackURIs(searchItems);
+  console.log(trackURIs);
 
   res.send(searchItems);
 };
