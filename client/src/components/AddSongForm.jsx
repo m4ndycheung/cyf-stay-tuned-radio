@@ -15,7 +15,8 @@ export default function AddSongForm() {
         })
     }
 
-    async function submitFormData() {
+    async function submitFormData(event) {
+        event.preventDefault()
         const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
         method: "POST",
         headers: {
@@ -45,6 +46,7 @@ export default function AddSongForm() {
                 handleChangeEventFormInput={handleChangeEventFormInput}
             />
             <button
+                type="submit"
                 className="btn btn-primary"
                 onClick={submitFormData}
             >
