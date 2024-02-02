@@ -38,16 +38,7 @@ const EmbeddedPlayer = () => {
   }, []);
 
   return (
-    <div>
-      <div className="playlist">
-        <span
-          className="playlist"
-          data-spotify-id="spotify:playlist:2RoQkVgIhgQmCZadrMoDLd"
-        >
-          My First Playlist
-        </span>
-      </div>
-
+    <div className="playlist">
       <div id="embed-iframe"></div>
     </div>
   );
