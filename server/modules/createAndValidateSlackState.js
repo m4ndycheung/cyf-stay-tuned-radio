@@ -1,8 +1,9 @@
 const uuid = require("uuid");
 
+const activeID = {}; //here i'm creating an empty object to store the id
+
 //this function creates a unique id for the user that will expire after 10 minutes
 function createIdentifier() {
-  const activeID = {}; //here i'm creating an empty object to store the id
   //this generates a unique id, save it on the object with the time
   //plus 10 mins, as a key value pair.
   function generate() {
