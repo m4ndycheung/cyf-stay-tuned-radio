@@ -1,4 +1,3 @@
-const { query } = require("express");
 const querystring = require("querystring");
 
 const searchForSongsOnSpotify = async function (req, res) {
