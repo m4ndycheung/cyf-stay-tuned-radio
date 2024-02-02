@@ -1,5 +1,4 @@
 const { WebClient } = require("@slack/web-api");
-const authenticationWithSlack = require("./authenticationWithSlack");
 const createIdentifier = require("./createAndValidateSlackState");
 
 const client = new WebClient();
@@ -11,7 +10,7 @@ const myIdentifier = createIdentifier();
 const exchangeAccessCodeWithSlack = async function (req, res) {
   const state = req.query.state;
   console.log(`State passed to validate: ${state}`);
-  if (!state || !myIdentifier.validate(state)) {
+  if (!state || !(await myIdentifier.validate(state))) {
     return res.status(400).send("Invalid state parameter");
   }
 
@@ -27,7 +26,6 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     let userAccessToken = token.access_token;
     const tokenWiredClient = new WebClient(userAccessToken);
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
-    console.log(userInfo);
     res.send(userInfo);
   } catch (error) {
     console.error("Error exchanging code for token:", error);
