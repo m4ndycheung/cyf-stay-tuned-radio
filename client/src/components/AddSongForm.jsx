@@ -28,11 +28,28 @@ export default function AddSongForm() {
     }
   
     return (
-        <>
-            <FormTextInput inputName="Artist" inputID="artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
-            <FormTextInput inputName="Song Title" inputID="song_title" handleChangeEventFormInput={handleChangeEventFormInput}/>
-            <FormTextInput inputName="Spotify URL" inputID="spotify_url" handleChangeEventFormInput={handleChangeEventFormInput}/>
-            <button onClick={submitFormData}>Submit</button>
-        </>
+        <form>
+            <FormTextInput
+                inputName="Artist"
+                inputID="artist"
+                handleChangeEventFormInput={handleChangeEventFormInput}
+            />
+            <FormTextInput
+                inputName="Song Title"
+                inputID="song_title"
+                handleChangeEventFormInput={handleChangeEventFormInput}
+            />
+            <FormTextInput
+                inputName="Spotify URL"
+                inputID="spotify_url"
+                handleChangeEventFormInput={handleChangeEventFormInput}
+            />
+            <button
+                className="btn btn-primary"
+                onClick={submitFormData}
+            >
+                Submit
+            </button>
+        </form>
     )
 }
