@@ -2,13 +2,12 @@ const querystring = require("querystring");
 const createIdentifier = require("./createAndValidateSlackState");
 
 const slack_client_id = process.env.SLACK_CLIENT_ID;
-const slack_client_secret = process.env.SLACK_CLIENT_SECRET;
 const slack_redirect_uri = process.env.SLACK_REDIRECT_URI;
 const scope = "openid,email,profile";
 
 const myIdentifier = createIdentifier();
 
-const authenticationWithSlack = async function (_, res) {
+const authenticationWithSlack = async function (req, res) {
   const state = await myIdentifier.generate();
   console.log(`generated state: ${state}`);
   const queryParams = querystring.stringify({
