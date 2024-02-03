@@ -1,5 +1,3 @@
-const querystring = require("querystring");
-
 const searchForSongsOnSpotify = async function (req, res) {
   //calling the /refresh_token endpoint to call the function to get the access and refresh tokens
   const serverURL = process.env.server_url;
@@ -7,24 +5,17 @@ const searchForSongsOnSpotify = async function (req, res) {
   const newTokenObject = await requestRefreshToken.json();
   const newAccessToken = newTokenObject.access_token;
 
-  // destructured req.query to get these params
-  const { q, type, limit } = req.query;
+  // destructured req.query to get the query params which will be sent from FE search bar
+  const { query } = req.query;
 
-  // querystring places params into a neat string
-  const queryParams = querystring.stringify({
-    q: q,
-    type: type,
-    limit: limit,
-  });
+  console.log(query);
 
-  // queryParams to look something like (if searching for songs):
+  // query to look something like (if searching for songs):
   // q=japanesebreakfast&type=track&limit=5
-
-  console.log(queryParams);
 
   // GET request containing query params and access token
   const searchRequest = await fetch(
-    `https://api.spotify.com/v1/search?${queryParams}`,
+    `https://api.spotify.com/v1/search?q=${query}&type=track&limit=5`,
     {
       method: "GET",
       headers: {
@@ -40,7 +31,7 @@ const searchForSongsOnSpotify = async function (req, res) {
 
   // extract items array from tracks
   const searchItems = searchResponse.tracks.items;
-  console.log(searchItems);
+  // console.log(searchItems);
 
   // function to loop through items and pushes uri's into an array
   function getTrackURIs(data) {
@@ -54,6 +45,8 @@ const searchForSongsOnSpotify = async function (req, res) {
 
   // call the getTrackURIs function
   const trackURIs = getTrackURIs(searchItems);
+
+  // we can use the data that comes back to populate the results with (songs / artist name / album art etc / id (info we need for the DB))
 
   res.send(trackURIs);
 };
