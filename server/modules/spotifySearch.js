@@ -1,5 +1,5 @@
 const searchForSongsOnSpotify = async function (req, res) {
-  //calling the /refresh_token endpoint to call the function to get the access and refresh tokens
+  // calling the /refresh_token endpoint to call the function to get the access and refresh tokens
   const serverURL = process.env.server_url;
   const requestRefreshToken = await fetch(`${serverURL}/refresh_token`);
   const newTokenObject = await requestRefreshToken.json();
@@ -12,6 +12,7 @@ const searchForSongsOnSpotify = async function (req, res) {
 
   // query to look something like (if searching for songs):
   // q=japanesebreakfast&type=track&limit=5
+  // to test, type into browser: http://localhost:3001/search?query=yoursearchquery
 
   // GET request containing query params and access token
   const searchRequest = await fetch(
@@ -25,7 +26,7 @@ const searchForSongsOnSpotify = async function (req, res) {
     }
   );
 
-  // spotify returns a response that looks wild
+  // Spotify returns a response that looks wild but it's basically the search results
   // .json() parses the response into a JS object
   const searchResponse = await searchRequest.json();
 
@@ -33,10 +34,13 @@ const searchForSongsOnSpotify = async function (req, res) {
   const searchItems = searchResponse.tracks.items;
   // console.log(searchItems);
 
-  // function to loop through items and pushes uri's into an array
-  function getTrackURIs(data) {
+  // this function returns relevant song data
+  function getTrackSearchResults(data) {
+    // an empty array where song data will be pushed to
     const trackObjectArray = [];
 
+    // for loop goes through each item (i.e. [0],[1],[2]..) created an object to hold track data
+    // pushes the object to the trackObjectArray
     for (const item of data) {
       const trackObject = {
         trackName: item.name,
@@ -49,11 +53,11 @@ const searchForSongsOnSpotify = async function (req, res) {
     return trackObjectArray;
   }
 
-  // call the getTrackURIs function
-  const trackSearchResults = getTrackURIs(searchItems);
+  // call the getTrackSearchResults function
+  const trackSearchResults = getTrackSearchResults(searchItems);
 
-  // we can use the data that comes back to populate the results with (songs / artist name / album art etc / id (info we need for the DB))
-
+  // sends searchResults to browser --- ermagerd so cool!!
   res.send(trackSearchResults);
 };
+
 module.exports = searchForSongsOnSpotify;
