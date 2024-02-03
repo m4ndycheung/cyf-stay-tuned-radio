@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const initiateLogin = require("./modules/initiateLogin");
 const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
+const apiCallToAddSongsToDB = require("./modules/apiCallToAddSongsToDB")
 const apiCallToGetSongsFromDB = require("./modules/apiCallToGetSongsFromDB");
 const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAccessToken");
 const authenticationWithSlack = require("./modules/authenticationWithSlack");
@@ -34,6 +35,7 @@ app.get("/", function (req, res) {
 
 app.get("/login", initiateLogin);
 app.get("/callback", getAccessAndRefreshTokens);
+app.post("/songs/add", apiCallToAddSongsToDB)
 app.get("/songs", apiCallToGetSongsFromDB);
 app.get("/songs/random", apiCallToGetRandomSongsFromDB);
 app.get("/refresh_token", exchangeRefreshForAccessToken);
