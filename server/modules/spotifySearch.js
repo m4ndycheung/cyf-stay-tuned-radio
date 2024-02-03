@@ -41,11 +41,9 @@ const searchForSongsOnSpotify = async function (req, res) {
       const trackObject = {
         trackName: item.name,
         artistName: item.artists[0].name,
+        songURI: item.uri,
+        imageURL: item.album.images[2].url,
       };
-      console.log(`song name: ${item.name}`);
-      console.log(`artist name: ${item.artists[0].name}`);
-      console.log(`song uri: ${item.uri}`);
-      console.log(`smol image url: ${item.album.images[2].url}`);
       trackObjectArray.push(trackObject);
     }
     return trackObjectArray;
