@@ -5,7 +5,7 @@ import "./header.css"
 
 const Header = () => {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="rounded bg-body-tertiary mb-3">
             <Container>
                 <Navbar.Brand href="#home">MACI</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

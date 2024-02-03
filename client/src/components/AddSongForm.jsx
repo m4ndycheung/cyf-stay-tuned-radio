@@ -33,7 +33,7 @@ export default function AddSongForm() {
     const [open, setOpen] = useState(false);
   
     return (
-        <div className="container ">
+        <>
             <button
                     type="submit"
                     className="btn btn-primary"
@@ -43,9 +43,9 @@ export default function AddSongForm() {
                 >
                 Add Songs
             </button>
-            <div className="container bg-body-tertiary">
+            <div className="rounded container bg-body-tertiary">
                 <Collapse in={open}>
-                    <form>
+                    <form className="m-2 p-3">
                         <FormTextInput
                             inputName="Artist"
                             inputID="artist"
@@ -71,6 +71,6 @@ export default function AddSongForm() {
                     </form>
                 </Collapse>
             </div>
-        </div>
+        </>
     )
 }
