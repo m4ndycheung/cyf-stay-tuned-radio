@@ -32,16 +32,16 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
 
     if (team_domain === "team-maci") {
       console.log(`MEMBER: ${team_domain}`);
-      res.send({ UserInfo, ShowButton: true });
+      res.send({ userInfo, ShowButton: true });
       // res.send(identityInfo);
     } else {
       console.log(`YOU SHALL NOT PASS! Wrong domain: ${team_domain}`);
-      res.status(403).send({ UserInfo, ShowButton: false });
+      res.status(403).send({ userInfo, ShowButton: false });
     }
 
     // ////////////////////////////////////////////////////
     // console.log(userInfo);
-    res.send(userInfo);
+    // res.send(userInfo);
   } catch (error) {
     console.error("Error exchanging code for token:", error);
     res.status(500).send("Internal Server Error");

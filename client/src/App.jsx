@@ -31,6 +31,21 @@ function App() {
     alert(response.result);
   }
 
+  const [showButton, setShowButton] = useState(false);
+
+  // const requestSongs = await fetch(`${server_url}/songs`)
+
+  async function handleShowButton(event) {
+    event.preventDefault();
+    const slackLoginRequest = await fetch(`${server_url}/slack-sign-in`);
+    const slackLoginResponse = await slackLoginRequest;
+    console.log("You clicked me Boop!");
+
+    console.log(slackLoginResponse);
+
+    // setShowButton(true);
+  }
+
   return (
     <>
       <div>
@@ -58,23 +73,25 @@ function App() {
         handleChangeEventFormInput={handleChangeEventFormInput}
       />
       <button onClick={submitFormData}>Submit</button>
-
       {/* /////////////////////////////// */}
-      <button onClick={handleShowButton}>Login to Add Slack</button>
       {/* //////////////////////////////// */}
-
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div>
+        {/* this is visible to everyone */}
+        <h1>bla bla</h1>
+        {showButton === true ? (
+          // this is visible when showButton equals true
+          <>
+            <p>test - your logged in and verified: this shows now!</p>
+          </>
+        ) : (
+          // this shows when showButton does not equal true
+          <>
+            <p>you are not authorised</p>
+            <button onClick={handleShowButton}>Login to Add Slack</button>
+          </>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* //////////////////////////////// */}
     </>
   );
 }
