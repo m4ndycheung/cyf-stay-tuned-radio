@@ -35,23 +35,27 @@ const searchForSongsOnSpotify = async function (req, res) {
 
   // function to loop through items and pushes uri's into an array
   function getTrackURIs(data) {
-    const uriArray = [];
+    const trackObjectArray = [];
 
     for (const item of data) {
+      const trackObject = {
+        trackName: item.name,
+        artistName: item.artists[0].name,
+      };
       console.log(`song name: ${item.name}`);
       console.log(`artist name: ${item.artists[0].name}`);
       console.log(`song uri: ${item.uri}`);
       console.log(`smol image url: ${item.album.images[2].url}`);
-      uriArray.push(item.uri);
+      trackObjectArray.push(trackObject);
     }
-    return uriArray;
+    return trackObjectArray;
   }
 
   // call the getTrackURIs function
-  const trackURIs = getTrackURIs(searchItems);
+  const trackSearchResults = getTrackURIs(searchItems);
 
   // we can use the data that comes back to populate the results with (songs / artist name / album art etc / id (info we need for the DB))
 
-  res.send(searchItems);
+  res.send(trackSearchResults);
 };
 module.exports = searchForSongsOnSpotify;
