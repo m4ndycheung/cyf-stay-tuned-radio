@@ -37,7 +37,10 @@ function App() {
 
   async function handleShowButton(event) {
     event.preventDefault();
-    const slackLoginRequest = await fetch(`${server_url}/slack-sign-in`);
+    // const slackLoginRequest = await fetch(`${server_url}/slack-sign-in`);
+    const slackLoginRequest = await fetch(
+      `https://stay-tuned-radio-server.onrender.com/slack-sign-in`
+    );
     const slackLoginResponse = await slackLoginRequest;
     console.log("You clicked me Boop!");
 
@@ -87,7 +90,7 @@ function App() {
           // this shows when showButton does not equal true
           <>
             <p>you are not authorised</p>
-            <button onClick={handleShowButton}>Login to Add Slack</button>
+            <button onClick={handleShowButton}>Login to Add Songs</button>
           </>
         )}
       </div>
