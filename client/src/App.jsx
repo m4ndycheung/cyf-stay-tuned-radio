@@ -14,23 +14,23 @@ function App() {
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [key]: value
+        [key]: value,
       };
-    })
+    });
   }
 
   async function submitFormData() {
     const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
-    })
-    const response = await sendSongsToDB.json()
-    alert(response.result)
+      body: JSON.stringify(formData),
+    });
+    const response = await sendSongsToDB.json();
+    alert(response.result);
   }
-  
+
   return (
     <>
       <div>
@@ -42,10 +42,27 @@ function App() {
         </a>
       </div>
       <EmbeddedPlayer />
-      <FormTextInput inputName="Artist" inputID="artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
-      <FormTextInput inputName="Song Title" inputID="song_title" handleChangeEventFormInput={handleChangeEventFormInput}/>
-      <FormTextInput inputName="Spotify URL" inputID="spotify_url" handleChangeEventFormInput={handleChangeEventFormInput}/>
+      <FormTextInput
+        inputName="Artist"
+        inputID="artist"
+        handleChangeEventFormInput={handleChangeEventFormInput}
+      />
+      <FormTextInput
+        inputName="Song Title"
+        inputID="song_title"
+        handleChangeEventFormInput={handleChangeEventFormInput}
+      />
+      <FormTextInput
+        inputName="Spotify URL"
+        inputID="spotify_url"
+        handleChangeEventFormInput={handleChangeEventFormInput}
+      />
       <button onClick={submitFormData}>Submit</button>
+
+      {/* /////////////////////////////// */}
+      <button onClick={handleShowButton}>Login to Add Slack</button>
+      {/* //////////////////////////////// */}
+
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>

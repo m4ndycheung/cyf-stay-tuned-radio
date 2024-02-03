@@ -32,10 +32,11 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
 
     if (team_domain === "team-maci") {
       console.log(`MEMBER: ${team_domain}`);
+      res.send({ UserInfo, ShowButton: true });
       // res.send(identityInfo);
     } else {
       console.log(`YOU SHALL NOT PASS! Wrong domain: ${team_domain}`);
-      res.status(403).send("Forbidden");
+      res.status(403).send({ UserInfo, ShowButton: false });
     }
 
     // ////////////////////////////////////////////////////
