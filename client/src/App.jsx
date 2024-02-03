@@ -5,13 +5,15 @@ import AddSongForm from "./components/AddSongForm";
 import Header from "./components/header/Header";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
+import Background from './components/Background';
 
 function App() {
   return (
     <>
+      <Background />
       <Header />
-      <Home />
-      <About />
+      {/* <Home />
+      <About /> */}
       <EmbeddedPlayer />
       <AddSongForm />
     </>
