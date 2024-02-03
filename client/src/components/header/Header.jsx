@@ -6,9 +6,9 @@ import "./header.css"
 const Header = () => {
     return (
         <Navbar expand="lg" className="rounded bg-body-tertiary mb-3">
-            <Container>
+            <Container className='mx-3'>
                 <Navbar.Brand href="#home">MACI</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link href="#home">Home</Nav.Link>
