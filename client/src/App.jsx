@@ -49,35 +49,41 @@ function App() {
   //   // setShowButton(true);
   // }
 
-
-  function createPopupWin(pageURL, pageTitle,
-    popupWinWidth, popupWinHeight) {
+  function createPopupWin(pageURL, pageTitle, popupWinWidth, popupWinHeight) {
     let left = (screen.width - popupWinWidth) / 2;
     let top = (screen.height - popupWinHeight) / 4;
 
-    let myWindow = window.open(pageURL, pageTitle,
-        'resizable=yes, width=' + popupWinWidth
-        + ', height=' + popupWinHeight + ', top='
-        + top + ', left=' + left);
-}
+    let myWindow = window.open(
+      pageURL,
+      pageTitle,
+      "resizable=yes, width=" +
+        popupWinWidth +
+        ", height=" +
+        popupWinHeight +
+        ", top=" +
+        top +
+        ", left=" +
+        left
+    );
+  }
 
   async function handleClick(event) {
     //stop pesky refresh
-    event.preventDefault()
+    event.preventDefault();
     //calls slack-sign-in endpoint
-    const requestCall = await fetch(`${server_url}/slack-sign-in`)
+    const requestCall = await fetch(`${server_url}/slack-sign-in`);
     //waits for response from fetch call. Returns {url: `https://slack.com/openid/connect/authorize?${queryParams}`}
-    const responseCall = await requestCall.json()
+    const responseCall = await requestCall.json();
     // set slackLoginPortal to https://slack.com/openid/connect/authorize?${queryParams (from response)
-    const slackLoginPortal = responseCall.url
+    const slackLoginPortal = responseCall.url;
     // window.open(slackLoginPortal, "Window", "popup height=600 width=600");
     //createPopupWin is exactly same as window.open except it calculates screen size and centres window
-    createPopupWin(slackLoginPortal, "Slack Login", 600, 600)
+    createPopupWin(slackLoginPortal, "Slack Login", 600, 600);
   }
 
   return (
     <>
-      <div>
+      {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -104,8 +110,7 @@ function App() {
       <button onClick={submitFormData}>Submit</button>
       {/* /////////////////////////////// */}
       {/* //////////////////////////////// */}
-      <div>
-        {/* this is visible to everyone */}
+      {/* <div>
         <h1>bla bla</h1>
         {showButton === true ? (
           // this is visible when showButton equals true
@@ -122,11 +127,10 @@ function App() {
       </div>
       {/* //////////////////////////////// */}
 
-      <p className="read-the-docs">
+      {/* <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p>   */}
       <button onClick={handleClick}>Login</button>
-
     </>
   );
 }
