@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: import.meta.env.VITE_SERVER_URL,
+        target: "https://stay-tuned-radio-server.onrender.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
