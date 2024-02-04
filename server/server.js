@@ -8,7 +8,14 @@ const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAcces
 const authenticationWithSlack = require("./modules/authenticationWithSlack");
 const exchangeAccessCodeWithSlack = require("./modules/exchangeAccessCodeWithSlack");
 const getRefreshAndUpdatePlaylist = require("./modules/getRefreshTokenAndUpdatePlaylist");
+// /////////////////////
+const { createProxyMiddleware } = require("http-proxy-middleware");
+const apiProxy = createProxyMiddleware("/api", {
+  target: "http://localhost:3001",
+  changeOrigin: true,
+});
 
+// ///////////////////////////
 const PORT = process.env.PORT || 3001;
 
 const bodyParser = require("body-parser");
@@ -23,6 +30,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+///////////////////////////
+app.use("/api", apiProxy);
+////////////////////////////
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
