@@ -31,22 +31,48 @@ function App() {
     alert(response.result);
   }
 
-  const [showButton, setShowButton] = useState(false);
+  // const [showButton, setShowButton] = useState(false);
 
-  // const requestSongs = await fetch(`${server_url}/songs`)
+  // // const requestSongs = await fetch(`${server_url}/songs`)
 
-  async function handleShowButton(event) {
-    event.preventDefault();
-    // const slackLoginRequest = await fetch(`${server_url}/slack-sign-in`);
-    const slackLoginRequest = await fetch(
-      `https://stay-tuned-radio-server.onrender.com/slack-sign-in`
-    );
-    const slackLoginResponse = await slackLoginRequest;
-    console.log("You clicked me Boop!");
+  // async function handleShowButton(event) {
+  //   event.preventDefault();
+  //   // const slackLoginRequest = await fetch(`${server_url}/slack-sign-in`);
+  //   const slackLoginRequest = await fetch(
+  //     `https://stay-tuned-radio-server.onrender.com/slack-sign-in`
+  //   );
+  //   const slackLoginResponse = await slackLoginRequest;
+  //   console.log("You clicked me Boop!");
 
-    console.log(slackLoginResponse);
+  //   console.log(slackLoginResponse);
 
-    // setShowButton(true);
+  //   // setShowButton(true);
+  // }
+
+
+  function createPopupWin(pageURL, pageTitle,
+    popupWinWidth, popupWinHeight) {
+    let left = (screen.width - popupWinWidth) / 2;
+    let top = (screen.height - popupWinHeight) / 4;
+
+    let myWindow = window.open(pageURL, pageTitle,
+        'resizable=yes, width=' + popupWinWidth
+        + ', height=' + popupWinHeight + ', top='
+        + top + ', left=' + left);
+}
+
+  async function handleClick(event) {
+    //stop pesky refresh
+    event.preventDefault()
+    //calls slack-sign-in endpoint
+    const requestCall = await fetch(`${server_url}/slack-sign-in`)
+    //waits for response from fetch call. Returns {url: `https://slack.com/openid/connect/authorize?${queryParams}`}
+    const responseCall = await requestCall.json()
+    // set slackLoginPortal to https://slack.com/openid/connect/authorize?${queryParams (from response)
+    const slackLoginPortal = responseCall.url
+    // window.open(slackLoginPortal, "Window", "popup height=600 width=600");
+    //createPopupWin is exactly same as window.open except it calculates screen size and centres window
+    createPopupWin(slackLoginPortal, "Slack Login", 600, 600)
   }
 
   return (
@@ -95,6 +121,12 @@ function App() {
         )}
       </div>
       {/* //////////////////////////////// */}
+
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+      <button onClick={handleClick}>Login</button>
+
     </>
   );
 }

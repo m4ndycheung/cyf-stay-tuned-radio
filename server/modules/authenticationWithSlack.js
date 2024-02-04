@@ -47,7 +47,7 @@ const authenticationWithSlack = async function (_, res) {
     scope: scope,
   });
   console.log(queryParams);
-  res.redirect(`https://slack.com/openid/connect/authorize?${queryParams}`);
+  // res.redirect(`https://slack.com/openid/connect/authorize?${queryParams}`);
   // res.send(`<html>
   // <head><style>body {padding: 10px 15px;font-family: verdana;text-align: center;}</style></head>
   // <body>
@@ -55,6 +55,8 @@ const authenticationWithSlack = async function (_, res) {
   // <p><a href="${url}"><img alt="Sign in with Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a></p>
   // </body>
   // </html>`);
+  res.send({url: `https://slack.com/openid/connect/authorize?${queryParams}`});
+
 };
 
 module.exports = authenticationWithSlack;
