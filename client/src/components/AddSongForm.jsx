@@ -1,5 +1,7 @@
 import { useState } from "react";
 import FormTextInput from "./FormTextInput";
+import Collapse from 'react-bootstrap/Collapse';
+import "./AddSongForm.css";
 
 export default function AddSongForm() {
     const [formData, setFormData] = useState({});
@@ -14,7 +16,8 @@ export default function AddSongForm() {
         })
     }
 
-    async function submitFormData() {
+    async function submitFormData(event) {
+        event.preventDefault()
         const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
         method: "POST",
         headers: {
@@ -25,13 +28,49 @@ export default function AddSongForm() {
         const response = await sendSongsToDB.json()
         alert(response.result)
     }
+
+
+    const [open, setOpen] = useState(false);
   
     return (
         <>
-            <FormTextInput inputName="Artist" inputID="artist" handleChangeEventFormInput={handleChangeEventFormInput}/>
-            <FormTextInput inputName="Song Title" inputID="song_title" handleChangeEventFormInput={handleChangeEventFormInput}/>
-            <FormTextInput inputName="Spotify URL" inputID="spotify_url" handleChangeEventFormInput={handleChangeEventFormInput}/>
-            <button onClick={submitFormData}>Submit</button>
+            <button
+                    type="submit"
+                    className="btn btn-primary"
+                    onClick={() => setOpen(!open)}
+                    aria-controls="control-collapse-add-song-form"
+                    aria-expanded={open}
+                >
+                Add Songs
+            </button>
+            <div className="rounded container bg-body-tertiary">
+                <Collapse in={open}>
+                    <form className="m-2 p-3">
+                        <FormTextInput
+                            inputName="Artist"
+                            inputID="artist"
+                            handleChangeEventFormInput={handleChangeEventFormInput}
+                        />
+                        <FormTextInput
+                            inputName="Song Title"
+                            inputID="song_title"
+                            handleChangeEventFormInput={handleChangeEventFormInput}
+                        />
+                        <FormTextInput
+                            inputName="Spotify URL"
+                            inputID="spotify_url"
+                            handleChangeEventFormInput={handleChangeEventFormInput}
+                        />
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            onClick={submitFormData}
+                        >
+                            Submit
+                        </button>
+                    </form>
+                </Collapse>
+            </div>
         </>
     )
 }
