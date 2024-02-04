@@ -9,6 +9,7 @@ const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAcces
 const authenticationWithSlack = require("./modules/authenticationWithSlack");
 const exchangeAccessCodeWithSlack = require("./modules/exchangeAccessCodeWithSlack");
 const getRefreshAndUpdatePlaylist = require("./modules/getRefreshTokenAndUpdatePlaylist");
+const searchForSongsOnSpotify = require("./modules/spotifySearch");
 
 const PORT = process.env.PORT || 3001;
 
@@ -42,3 +43,4 @@ app.get("/refresh_token", exchangeRefreshForAccessToken);
 app.get("/slack-sign-in", authenticationWithSlack);
 app.get("/slack/oauth_redirect", exchangeAccessCodeWithSlack);
 app.get("/update", getRefreshAndUpdatePlaylist);
+app.get("/search", searchForSongsOnSpotify);
