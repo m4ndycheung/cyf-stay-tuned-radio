@@ -12,6 +12,11 @@ const SessionStorageTest = () => {
     sessionStorage.setItem("token", inputData);
   };
 
+  const getData = (event) => {
+    event.preventDefault();
+    alert(sessionStorage.getItem("token"));
+  };
+
   return (
     <form>
       <input
@@ -23,6 +28,9 @@ const SessionStorageTest = () => {
       <div>
         <button className="btn btn-success p-2 m-2" onClick={setData}>
           Set session storage data
+        </button>
+        <button className="btn btn-primary p-2 m-2" onClick={getData}>
+          Get session storage data
         </button>
       </div>
     </form>
