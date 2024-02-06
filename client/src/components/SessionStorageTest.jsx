@@ -17,6 +17,11 @@ const SessionStorageTest = () => {
     alert(sessionStorage.getItem("token"));
   };
 
+  const deleteData = (event) => {
+    event.preventDefault();
+    sessionStorage.removeItem("token");
+  };
+
   return (
     <form>
       <input
@@ -31,6 +36,9 @@ const SessionStorageTest = () => {
         </button>
         <button className="btn btn-primary p-2 m-2" onClick={getData}>
           Get session storage data
+        </button>
+        <button className="btn btn-danger p-2 m-2" onClick={deleteData}>
+          Delete Session Storage
         </button>
       </div>
     </form>
