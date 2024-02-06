@@ -7,6 +7,11 @@ const SessionStorageTest = () => {
     setInputData(event.target.value);
   };
 
+  const setData = (event) => {
+    event.preventDefault();
+    sessionStorage.setItem("token", inputData);
+  };
+
   return (
     <form>
       <input
@@ -15,6 +20,11 @@ const SessionStorageTest = () => {
         placeholder="enter text to store and press set"
         onChange={handleChange}
       />
+      <div>
+        <button className="btn btn-success p-2 m-2" onClick={setData}>
+          Set session storage data
+        </button>
+      </div>
     </form>
   );
 };
