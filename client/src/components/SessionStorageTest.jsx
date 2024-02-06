@@ -26,7 +26,7 @@ const SessionStorageTest = () => {
     <form>
       <input
         type="text"
-        className="form-control m-2"
+        className="form-control my-3"
         placeholder="enter text to store and press set"
         onChange={handleChange}
       />
