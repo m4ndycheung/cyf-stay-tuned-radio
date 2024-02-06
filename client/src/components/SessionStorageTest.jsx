@@ -38,7 +38,7 @@ const SessionStorageTest = () => {
           Get session storage data
         </button>
         <button className="btn btn-danger p-2 m-2" onClick={deleteData}>
-          Delete Session Storage
+          Delete Session Storage data
         </button>
       </div>
     </form>
