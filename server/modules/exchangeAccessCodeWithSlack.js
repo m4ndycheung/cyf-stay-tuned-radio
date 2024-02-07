@@ -1,5 +1,6 @@
 const { WebClient } = require("@slack/web-api");
 const createIdentifier = require("./createAndValidateSlackState");
+const jwt = require("jsonwebtoken");
 
 const client = new WebClient();
 
@@ -26,7 +27,17 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     let userAccessToken = token.access_token;
     const tokenWiredClient = new WebClient(userAccessToken);
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
-    res.send(userInfo);
+
+    const userObject = {
+      user_id: userInfo["https://slack.com/user_id"],
+      role: "basic",
+    };
+
+    const jwtSecret = process.env.JWT_SECRET;
+
+    // create jwt for access to stay tuned radio (our) website
+    const teamMaciToken = jwt.sign(userObject, jwtSecret);
+    res.send(teamMaciToken);
   } catch (error) {
     console.error("Error exchanging code for token:", error);
     res.status(500).send("Internal Server Error");
