@@ -12,9 +12,12 @@ function App() {
   const search = window.location.search;
   const params = new URLSearchParams(search);
   const maciToken = params.get("token");
-  //set session storage data for maciToken
-  sessionStorage.setItem("maciToken", maciToken);
-  console.log(`sessionStorageData: ${sessionStorage.getItem("maciToken")}`);
+  // check if query return equals null and if it does not set sessionstorage to maciToken
+  if (maciToken !== null) {
+    //set session storage data for maciToken
+    sessionStorage.setItem("maciToken", maciToken);
+    console.log(`sessionStorageData: ${sessionStorage.getItem("maciToken")}`);
+  }
   return (
     <>
       <Background />
