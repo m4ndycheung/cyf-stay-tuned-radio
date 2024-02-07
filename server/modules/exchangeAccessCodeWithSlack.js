@@ -37,7 +37,9 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
 
     // create jwt for access to stay tuned radio (our) website
     const teamMaciToken = jwt.sign(userObject, jwtSecret);
-    res.send(teamMaciToken);
+    // add FRONTEND_URL to readme and .env
+    //teamMaciToken is sent to frontend using the querystring
+    res.redirect(`${process.env.FRONTEND_URL}?token=${teamMaciToken}`);
   } catch (error) {
     console.error("Error exchanging code for token:", error);
     res.status(500).send("Internal Server Error");
