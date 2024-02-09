@@ -26,7 +26,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(verifyMaciToken);
+// app.use(verifyMaciToken);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
