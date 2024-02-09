@@ -12,8 +12,11 @@ function verifyMaciToken(req, res, next) {
     "/search",
   ];
 
+  const basicURLs = ["/songs/add"];
+  const adminURLs = ["/update"];
+
   // if requestURL is not inside publicURLs then run following code
-  if (!publicURLs.includes(requestURL)) {
+  if (basicURLs.includes(requestURL) || adminURLs.includes(requestURL)) {
     // get authorization part of header
     const authorisationHeader = req.headers.authorization;
 
@@ -27,9 +30,18 @@ function verifyMaciToken(req, res, next) {
         if (error)
           return res.send("Hasta la vista, Aby! (i.e. jwt not verified)");
       });
-
       console.log(decode);
-      next();
+      const user_role = decode.role;
+
+      if (user_role === "admin") {
+        if (basicURLs.includes(requestURL) || adminURLs.includes(requestURL)) {
+          next();
+        }
+      }
+
+      if (user_role === "basic" && basicURLs.includes(requestURL)) {
+        next();
+      }
     } else {
       res.send("no header");
     }
@@ -37,5 +49,10 @@ function verifyMaciToken(req, res, next) {
     next();
   }
 }
+
+// {
+//   user_id: userInfo["https://slack.com/user_id"],
+//   role: "basic",
+// };
 
 module.exports = verifyMaciToken;
