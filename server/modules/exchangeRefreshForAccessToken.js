@@ -1,4 +1,3 @@
-var request = require("request");
 const { Pool } = require("pg");
 
 // refresh_token route expects a refresh_token query parameter, sends a POST request to Spotify's token endpoint with the refresh token, and responds with the new access and refresh tokens
