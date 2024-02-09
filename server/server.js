@@ -41,7 +41,6 @@ app.get("/callback", getAccessAndRefreshTokens);
 app.post("/songs/add", apiCallToAddSongsToDB);
 app.get("/songs", apiCallToGetSongsFromDB);
 app.get("/songs/random", apiCallToGetRandomSongsFromDB);
-app.get("/refresh_token", exchangeRefreshForAccessToken);
 app.get("/slack-sign-in", authenticationWithSlack);
 app.get("/slack/oauth_redirect", exchangeAccessCodeWithSlack);
 app.get("/update", getRefreshAndUpdatePlaylist);
