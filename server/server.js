@@ -1,11 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const initiateLogin = require("./modules/initiateLogin");
-const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
+// const initiateLogin = require("./modules/initiateLogin");
+// const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
 const apiCallToAddSongsToDB = require("./modules/apiCallToAddSongsToDB");
 const apiCallToGetSongsFromDB = require("./modules/apiCallToGetSongsFromDB");
-const exchangeRefreshForAccessToken = require("./modules/exchangeRefreshForAccessToken");
 const authenticationWithSlack = require("./modules/authenticationWithSlack");
 const exchangeAccessCodeWithSlack = require("./modules/exchangeAccessCodeWithSlack");
 const getRefreshAndUpdatePlaylist = require("./modules/getRefreshTokenAndUpdatePlaylist");
@@ -36,9 +35,10 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-app.get("/login", initiateLogin);
-app.get("/callback", getAccessAndRefreshTokens);
-app.post("/songs/add", apiCallToAddSongsToDB);
+// app.get("/login", initiateLogin);
+// app.get("/callback", getAccessAndRefreshTokens);
+
+app.post("/songs/add", apiCallToAddSongsToDB); // jwt
 app.get("/songs", apiCallToGetSongsFromDB);
 app.get("/songs/random", apiCallToGetRandomSongsFromDB);
 app.get("/slack-sign-in", authenticationWithSlack);
