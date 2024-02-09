@@ -3,7 +3,8 @@ const exchangeRefreshForAccessToken = require("./exchangeRefreshForAccessToken")
 const searchForSongsOnSpotify = async function (req, res) {
   // calling the /refresh_token endpoint to call the function to get the access and refresh tokens
   const serverURL = process.env.server_url;
-  // const requestRefreshToken = await fetch(`${serverURL}/refresh_token`);
+
+  // replaced fetch call to endpoint with imported function
   const newAccessToken = await exchangeRefreshForAccessToken();
   console.log(newAccessToken);
 
