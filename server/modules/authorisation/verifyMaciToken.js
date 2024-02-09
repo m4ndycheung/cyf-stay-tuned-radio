@@ -30,6 +30,7 @@ function verifyMaciToken(req, res, next) {
       const decode = jwt.verify(maciToken, process.env.JWT_SECRET);
       console.log(decode);
       const user_role = decode.role;
+      console.log(user_role);
 
       if (user_role === "admin") {
         if (basicURLs.includes(requestURL) || adminURLs.includes(requestURL)) {
@@ -39,6 +40,8 @@ function verifyMaciToken(req, res, next) {
 
       if (user_role === "basic" && basicURLs.includes(requestURL)) {
         next();
+      } else {
+        res.send("you are not authorised");
       }
     } else {
       res.send("no header");
