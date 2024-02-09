@@ -38,10 +38,15 @@ app.get("/", function (req, res) {
 // app.get("/login", initiateLogin);
 // app.get("/callback", getAccessAndRefreshTokens);
 
-app.post("/songs/add", apiCallToAddSongsToDB); // jwt
-app.get("/songs", apiCallToGetSongsFromDB);
-app.get("/songs/random", apiCallToGetRandomSongsFromDB);
+// public
+app.get("/songs", apiCallToGetSongsFromDB); // refactor later as module
+app.get("/songs/random", apiCallToGetRandomSongsFromDB); // refactor later as module
 app.get("/slack-sign-in", authenticationWithSlack);
 app.get("/slack/oauth_redirect", exchangeAccessCodeWithSlack);
+app.get("/search", searchForSongsOnSpotify); // if implemented later, need to change how jwt verify checks URL
+
+// jwt basic users
+app.post("/songs/add", apiCallToAddSongsToDB);
+
+// jwt admin users
 app.get("/update", getRefreshAndUpdatePlaylist);
-app.get("/search", searchForSongsOnSpotify);
