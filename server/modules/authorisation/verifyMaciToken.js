@@ -33,9 +33,7 @@ function verifyMaciToken(req, res, next) {
       console.log(user_role);
 
       if (user_role === "admin") {
-        if (basicURLs.includes(requestURL) || adminURLs.includes(requestURL)) {
-          next();
-        }
+        next();
       }
 
       if (user_role === "basic" && basicURLs.includes(requestURL)) {
