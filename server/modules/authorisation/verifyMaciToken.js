@@ -4,7 +4,13 @@ function verifyMaciToken(req, res, next) {
   const requestURL = req.url;
   console.log(requestURL);
 
-  const publicURLs = ["/slack-sign-in", "/slack/oauth_redirect", "/callback"];
+  const publicURLs = [
+    "/slack-sign-in",
+    "/slack/oauth_redirect",
+    "/songs",
+    "/songs/random",
+    "/search",
+  ];
 
   // if requestURL is not inside publicURLs then run following code
   if (!publicURLs.includes(requestURL)) {
