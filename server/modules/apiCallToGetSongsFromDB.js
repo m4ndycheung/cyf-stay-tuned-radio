@@ -10,7 +10,9 @@ const db = new Pool({
 });
 
 const apiCallToGetSongsFromDB = function (req, res) {
-  db.query("SELECT * FROM tracks")
+  db.query(
+    "SELECT song_name, artist_name, song_genre, spotify_song_id FROM tracks"
+  )
     .then((result) => {
       console.log(result.rows);
       res.status(200).json(result.rows);
