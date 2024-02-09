@@ -1,15 +1,14 @@
-var request = require("request");
-const { Pool } = require("pg");
 const deleteAllTracksFromSpotifyPlaylist = require("./deleteAllTracksFromSpotifyPlaylist");
 const addTracksToPlaylist = require("./addTracksToPlaylist");
+const exchangeRefreshForAccessToken = require("./exchangeRefreshForAccessToken");
 
 // /update route
 const getRefreshAndUpdatePlaylist = async function (req, res) {
   // calling the /refresh_token endpoint to call the function to get the access and refresh tokens
   const serverURL = process.env.server_url;
-  const requestRefreshToken = await fetch(`${serverURL}/refresh_token`);
-  const newTokenObject = await requestRefreshToken.json();
-  const newAccessToken = newTokenObject.access_token;
+  // replaced fetch call to endpoint with imported function
+  const newAccessToken = await exchangeRefreshForAccessToken();
+
   console.log(`NEWWWWWWWWW access token: ${newAccessToken}`);
 
   // API call to delete tracks from yesterday's spotify playlist
@@ -22,7 +21,7 @@ const getRefreshAndUpdatePlaylist = async function (req, res) {
   addTracksToPlaylist(newAccessToken, randomSongs, playlistID);
   res.send(
     `<p>Boop. Playlist Updated.</p>
-    <a href='https://open.spotify.com/playlist/7ML1iO1h2gFyjwYUkzcOGK' target='blank'>Check the playlist here</a>`
+    <a href='https://open.spotify.com/playlist/${playlistID}' target='blank'>Check the playlist here</a>`
   );
 };
 

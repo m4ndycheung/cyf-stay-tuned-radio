@@ -1,14 +1,17 @@
+const exchangeRefreshForAccessToken = require("./exchangeRefreshForAccessToken");
+
 const searchForSongsOnSpotify = async function (req, res) {
   // calling the /refresh_token endpoint to call the function to get the access and refresh tokens
   const serverURL = process.env.server_url;
-  const requestRefreshToken = await fetch(`${serverURL}/refresh_token`);
-  const newTokenObject = await requestRefreshToken.json();
-  const newAccessToken = newTokenObject.access_token;
+
+  // replaced fetch call to endpoint with imported function
+  const newAccessToken = await exchangeRefreshForAccessToken();
+  console.log(newAccessToken);
 
   // destructured req.query to get the query params which will be sent from FE search bar
   const { query } = req.query;
 
-  console.log(query);
+  // console.log(query);
 
   // query to look something like (if searching for songs):
   // q=japanesebreakfast&type=track&limit=5
@@ -30,6 +33,7 @@ const searchForSongsOnSpotify = async function (req, res) {
   // .json() parses the response into a JS object
   const searchResponse = await searchRequest.json();
 
+  console.log(searchResponse);
   // extract items array from tracks
   const searchItems = searchResponse.tracks.items;
   // console.log(searchItems);
