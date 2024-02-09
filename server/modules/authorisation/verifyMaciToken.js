@@ -49,9 +49,4 @@ function verifyMaciToken(req, res, next) {
   }
 }
 
-// {
-//   user_id: userInfo["https://slack.com/user_id"],
-//   role: "basic",
-// };
-
 module.exports = verifyMaciToken;
