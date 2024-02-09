@@ -22,14 +22,12 @@ function verifyMaciToken(req, res, next) {
 
     // checks if authorisationHeader is not empty i.e undefined
     if (authorisationHeader !== undefined) {
+      console.log(authorisationHeader);
       // remove Bearer to only get the JWT
       const maciToken = authorisationHeader.replace("Bearer ", "");
       // verify the token was created with maci secret
-      const decode = jwt.verify(maciToken, process.env.JWT_SECRET, (error) => {
-        // if can't verify, send error message
-        if (error)
-          return res.send("Hasta la vista, Aby! (i.e. jwt not verified)");
-      });
+      // removed error check as causing issues. need to revisit and show error when cant verify token
+      const decode = jwt.verify(maciToken, process.env.JWT_SECRET);
       console.log(decode);
       const user_role = decode.role;
 
