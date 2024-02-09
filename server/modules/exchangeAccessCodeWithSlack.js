@@ -1,5 +1,6 @@
 const { WebClient } = require("@slack/web-api");
 const createIdentifier = require("./createAndValidateSlackState");
+const jwt = require("jsonwebtoken");
 
 const client = new WebClient();
 
@@ -26,7 +27,24 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     let userAccessToken = token.access_token;
     const tokenWiredClient = new WebClient(userAccessToken);
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
-    res.send(userInfo);
+    const teamVerificationName = "team-maci";
+    const userTeamDomain = userInfo["https://slack.com/team_domain"];
+    //checks if user is part of team-maci and if true, create JWT and redirect user to frontend with token
+    if (userTeamDomain === teamVerificationName) {
+      const userObject = {
+        user_id: userInfo["https://slack.com/user_id"],
+        role: "basic",
+      };
+      const jwtSecret = process.env.JWT_SECRET;
+
+      // create jwt for access to stay tuned radio (our) website
+      const teamMaciToken = jwt.sign(userObject, jwtSecret);
+      // add FRONTEND_URL to readme and .env
+      //teamMaciToken is sent to frontend using the querystring
+      res.redirect(`${process.env.FRONTEND_URL}?token=${teamMaciToken}`);
+    } else {
+      res.redirect(`${process.env.FRONTEND_URL}`);
+    }
   } catch (error) {
     console.error("Error exchanging code for token:", error);
     res.status(500).send("Internal Server Error");
