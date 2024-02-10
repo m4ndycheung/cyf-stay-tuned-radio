@@ -1,6 +1,5 @@
 const querystring = require("querystring");
-const { Pool } = require("pg");
-
+const db = require("../data/database.js");
 
 const getAccessAndRefreshTokens = async function (req, res) {
   const TOKEN_URL = "https://accounts.spotify.com/api/token";
@@ -9,19 +8,9 @@ const getAccessAndRefreshTokens = async function (req, res) {
   const CLIENT_SECRET = process.env.CLIENT_SECRET;
   const code = req.query.code || null;
 
-  // db connection
-  const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    ssl: true,
-  });
-
   // store the refresh token in DB instead of console logging it
   const storeRefreshTokenInDB = async function (refresh_token) {
-    pool.query(
+    db.query(
       "UPDATE refresh_tokens_table SET refresh_token = $1 WHERE id = 1",
       [refresh_token],
       (error, result) => {
