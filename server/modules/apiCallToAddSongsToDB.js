@@ -1,11 +1,11 @@
 const db = require("../data/database.js");
+const extractSpotifyId = require("./spotify/utils.js");
 
 const apiCallToAddSongsToDB = function (req, res) {
   const artist_name = req.body.artist;
   const song_name = req.body.song_title;
   const spotify_url = req.body.spotify_url;
-  const re = /(?!track\/)([a-zA-Z0-9]){22}/;
-  const spotify_song_id = re.exec(spotify_url)[0];
+  const spotify_song_id = extractSpotifyId(spotify_url);
   const query = `INSERT INTO tracks (artist_name, song_name, spotify_song_id) VALUES ($1, $2, $3)`;
 
   db.query(query, [artist_name, song_name, spotify_song_id])
