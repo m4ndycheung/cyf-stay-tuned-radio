@@ -1,5 +1,5 @@
 const db = require("../data/database.js");
-const extractSpotifyId = require("./spotify/utils.js");
+const extractSpotifyId = require("../spotify/util.js");
 
 const apiCallToAddSongsToDB = function (req, res) {
   const artist_name = req.body.artist;
