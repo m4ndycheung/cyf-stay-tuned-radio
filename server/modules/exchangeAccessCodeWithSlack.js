@@ -30,6 +30,7 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     const teamVerificationName = "team-maci";
     const userTeamDomain = userInfo["https://slack.com/team_domain"];
     //checks if user is part of team-maci and if true, create JWT and redirect user to frontend with token
+    //next step: make array of slack_ids which will be given admin access and change userObject to have role: "admin"
     if (userTeamDomain === teamVerificationName) {
       const userObject = {
         user_id: userInfo["https://slack.com/user_id"],

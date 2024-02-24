@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import EmbeddedPlayer from "./components/EmbeddedPlayer";
@@ -18,14 +19,20 @@ function App() {
     sessionStorage.setItem("maciToken", maciToken);
     console.log(`sessionStorageData: ${sessionStorage.getItem("maciToken")}`);
   }
+
+  const [isLoggedIn, setLogin] = useState(false);
+  useEffect(() => {
+    if (sessionStorage.getItem("maciToken") !== null) setLogin(true);
+  }, []);
+
   return (
     <>
       <Background />
-      <Header />
+      <Header isLoggedIn={isLoggedIn} key={isLoggedIn} />
       {/* <Home />
       <About /> */}
       <EmbeddedPlayer />
-      <AddSongForm />
+      {isLoggedIn ? <AddSongForm /> : <></>}
     </>
   );
 }
