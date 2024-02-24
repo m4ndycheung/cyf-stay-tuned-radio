@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-const Header = () => {
+const Header = (isLoggedIn) => {
   const server_url = import.meta.env.VITE_SERVER_URL;
   const frontend_url = import.meta.env.VITE_FRONTEND_URL;
-
-  const [isLoggedIn, setLogin] = useState(false);
-  useEffect(() => {
-    if (sessionStorage.getItem("maciToken") !== null) setLogin(true);
-  }, []);
 
   const handleLogout = function (event) {
     event.preventDefault();
