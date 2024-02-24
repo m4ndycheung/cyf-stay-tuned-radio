@@ -24,10 +24,11 @@ function App() {
   useEffect(() => {
     if (sessionStorage.getItem("maciToken") !== null) setLogin(true);
   }, []);
+
   return (
     <>
       <Background />
-      <Header isLoggedIn={isLoggedIn} />
+      <Header isLoggedIn={isLoggedIn} key={isLoggedIn} />
       {/* <Home />
       <About /> */}
       <EmbeddedPlayer />
