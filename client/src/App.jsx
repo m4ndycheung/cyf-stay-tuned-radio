@@ -32,7 +32,7 @@ function App() {
       {/* <Home />
       <About /> */}
       <EmbeddedPlayer />
-      <AddSongForm />
+      {isLoggedIn ? <AddSongForm /> : <></>}
     </>
   );
 }
