@@ -12,7 +12,7 @@ const getRefreshAndUpdatePlaylist = async function (req, res) {
   console.log(`NEWWWWWWWWW access token: ${newAccessToken}`);
 
   // API call to delete tracks from yesterday's spotify playlist
-  const playlistID = process.env.playlist_id;
+  const playlistID = process.env.SPOTIFY_PLAYLIST_ID;
   deleteAllTracksFromSpotifyPlaylist(newAccessToken, playlistID);
 
   // API call to add tracks randomly selected from db to spotify playlist
