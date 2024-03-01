@@ -5,14 +5,14 @@ const exchangeRefreshForAccessToken = require("./exchangeRefreshForAccessToken")
 // /update route
 const getRefreshAndUpdatePlaylist = async function (req, res) {
   // calling the /refresh_token endpoint to call the function to get the access and refresh tokens
-  const serverURL = process.env.server_url;
+  const serverURL = process.env.SERVER_URL;
   // replaced fetch call to endpoint with imported function
   const newAccessToken = await exchangeRefreshForAccessToken();
 
   console.log(`NEWWWWWWWWW access token: ${newAccessToken}`);
 
   // API call to delete tracks from yesterday's spotify playlist
-  const playlistID = process.env.playlist_id;
+  const playlistID = process.env.SPOTIFY_PLAYLIST_ID;
   deleteAllTracksFromSpotifyPlaylist(newAccessToken, playlistID);
 
   // API call to add tracks randomly selected from db to spotify playlist
