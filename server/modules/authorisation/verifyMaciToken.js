@@ -18,7 +18,7 @@ function verifyMaciToken(req, res, next) {
   const basicURLsRE = /^\/songs\/add/;
   const adminURLsRE = /^\/update/;
 
-  // if requestURL is not inside publicURLs then run following code
+  // if requestURL is not inside publicURLs (therefore a private URL) then run following code
   if (basicURLsRE.test(requestURL) || adminURLsRE.test(requestURL)) {
     // get authorization part of header
     const authorisationHeader = req.headers.authorization;
