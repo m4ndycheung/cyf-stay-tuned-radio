@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+const db = require("../data/database.js");
 
 // refresh_token route expects a refresh_token query parameter, sends a POST request to Spotify's token endpoint with the refresh token, and responds with the new access and refresh tokens
 
@@ -7,16 +7,7 @@ const exchangeRefreshForAccessToken = async function (req, res) {
   const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
   // console.log("CLIENT_ID from variable:", CLIENT_ID);
 
-  const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    ssl: true,
-  });
-
-  const result = await pool.query(
+  const result = await db.query(
     "SELECT refresh_token FROM refresh_tokens_table LIMIT 1"
   );
 

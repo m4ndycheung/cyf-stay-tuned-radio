@@ -50,3 +50,5 @@ app.post("/songs/add", apiCallToAddSongsToDB);
 
 // jwt admin users
 app.get("/update", getRefreshAndUpdatePlaylist);
+
+module.exports = app;
