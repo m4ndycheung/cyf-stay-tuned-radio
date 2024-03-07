@@ -3,9 +3,9 @@ const db = require("../data/database.js");
 
 const getAccessAndRefreshTokens = async function (req, res) {
   const TOKEN_URL = "https://accounts.spotify.com/api/token";
-  const REDIRECT_URI = process.env.REDIRECT_URI;
-  const CLIENT_ID = process.env.CLIENT_ID;
-  const CLIENT_SECRET = process.env.CLIENT_SECRET;
+  const REDIRECT_URI = process.env.SPOTIFY_REDIRECT_URI;
+  const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+  const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
   const code = req.query.code || null;
 
   // store the refresh token in DB instead of console logging it

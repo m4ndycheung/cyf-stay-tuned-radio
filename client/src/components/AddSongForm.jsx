@@ -1,76 +1,77 @@
 import { useState } from "react";
 import FormTextInput from "./FormTextInput";
-import Collapse from 'react-bootstrap/Collapse';
+import Collapse from "react-bootstrap/Collapse";
 import "./AddSongForm.css";
 
 export default function AddSongForm() {
-    const [formData, setFormData] = useState({});
-    const server_url = import.meta.env.VITE_SERVER_URL;
+  const [formData, setFormData] = useState({});
+  const server_url = import.meta.env.VITE_SERVER_URL;
 
-    function handleChangeEventFormInput(key, value) {
-        setFormData((prevFormData) => {
-            return {
-                ...prevFormData,
-                [key]: value
-            };
-        })
-    }
+  function handleChangeEventFormInput(key, value) {
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [key]: value,
+      };
+    });
+  }
 
-    async function submitFormData(event) {
-        event.preventDefault()
-        const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-        })
-        const response = await sendSongsToDB.json()
-        alert(response.result)
-    }
+  // Refactor fetch call to add songs so the JWT token is sent together with the POST request - REQUIREMENT
+  async function submitFormData(event) {
+    event.preventDefault();
+    const sendSongsToDB = await fetch(`${server_url}/songs/add`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("maciToken")}`,
+      },
+      body: JSON.stringify(formData),
+    });
+    const response = await sendSongsToDB.json();
+    alert(response.result);
+  }
 
+  const [open, setOpen] = useState(false);
 
-    const [open, setOpen] = useState(false);
-  
-    return (
-        <>
+  return (
+    <>
+      <button
+        type="submit"
+        className="btn btn-primary"
+        onClick={() => setOpen(!open)}
+        aria-controls="control-collapse-add-song-form"
+        aria-expanded={open}
+      >
+        Add Songs
+      </button>
+      <div className="rounded container bg-body-tertiary">
+        <Collapse in={open}>
+          <form className="m-2 p-3">
+            <FormTextInput
+              inputName="Artist"
+              inputID="artist"
+              handleChangeEventFormInput={handleChangeEventFormInput}
+            />
+            <FormTextInput
+              inputName="Song Title"
+              inputID="song_title"
+              handleChangeEventFormInput={handleChangeEventFormInput}
+            />
+            <FormTextInput
+              inputName="Spotify URL"
+              inputID="spotify_url"
+              handleChangeEventFormInput={handleChangeEventFormInput}
+            />
             <button
-                    type="submit"
-                    className="btn btn-primary"
-                    onClick={() => setOpen(!open)}
-                    aria-controls="control-collapse-add-song-form"
-                    aria-expanded={open}
-                >
-                Add Songs
+              type="submit"
+              className="btn btn-primary"
+              onClick={submitFormData}
+            >
+              Submit
             </button>
-            <div className="rounded container bg-body-tertiary">
-                <Collapse in={open}>
-                    <form className="m-2 p-3">
-                        <FormTextInput
-                            inputName="Artist"
-                            inputID="artist"
-                            handleChangeEventFormInput={handleChangeEventFormInput}
-                        />
-                        <FormTextInput
-                            inputName="Song Title"
-                            inputID="song_title"
-                            handleChangeEventFormInput={handleChangeEventFormInput}
-                        />
-                        <FormTextInput
-                            inputName="Spotify URL"
-                            inputID="spotify_url"
-                            handleChangeEventFormInput={handleChangeEventFormInput}
-                        />
-                        <button
-                            type="submit"
-                            className="btn btn-primary"
-                            onClick={submitFormData}
-                        >
-                            Submit
-                        </button>
-                    </form>
-                </Collapse>
-            </div>
-        </>
-    )
+          </form>
+        </Collapse>
+      </div>
+    </>
+  );
 }

@@ -27,14 +27,21 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     let userAccessToken = token.access_token;
     const tokenWiredClient = new WebClient(userAccessToken);
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
+    console.log(`UserINFO here: ${userInfo}`);
+
+    //checks if user is part of team-maci and if true, create JWT and redirect user to frontend with token
     const teamVerificationName = "team-maci";
     const userTeamDomain = userInfo["https://slack.com/team_domain"];
-    //checks if user is part of team-maci and if true, create JWT and redirect user to frontend with token
+    const slackUserID = userInfo["https://slack.com/user_id"];
+    const groupAdminID = process.env.SLACK_ADMIN_USER_ID;
+
     if (userTeamDomain === teamVerificationName) {
+      // check to see if user is team member in order have authorisation to add songs
       const userObject = {
         user_id: userInfo["https://slack.com/user_id"],
-        role: "basic",
+        role: slackUserID === groupAdminID ? "admin" : "basic", // check to see if user is team admin in order have authorisation to reset daily playlist
       };
+      console.log(`I are ${userObject.role}`);
       const jwtSecret = process.env.JWT_SECRET;
 
       // create jwt for access to stay tuned radio (our) website

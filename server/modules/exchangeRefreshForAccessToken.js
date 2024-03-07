@@ -3,8 +3,8 @@ const db = require("../data/database.js");
 // refresh_token route expects a refresh_token query parameter, sends a POST request to Spotify's token endpoint with the refresh token, and responds with the new access and refresh tokens
 
 const exchangeRefreshForAccessToken = async function (req, res) {
-  const CLIENT_ID = process.env.CLIENT_ID;
-  const CLIENT_SECRET = process.env.CLIENT_SECRET;
+  const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
+  const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
   // console.log("CLIENT_ID from variable:", CLIENT_ID);
 
   const result = await db.query(
