@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-function verifyMaciToken(req, res, next) {
+function verifyWorkspaceToken(req, res, next) {
   const requestURL = req.url;
   console.log(requestURL);
 
@@ -27,10 +27,10 @@ function verifyMaciToken(req, res, next) {
     if (authorisationHeader !== undefined) {
       console.log(authorisationHeader);
       // remove Bearer to only get the JWT
-      const maciToken = authorisationHeader.replace("Bearer ", "");
-      // verify the token was created with maci secret
-      // removed error check as causing issues. need to revisit and show error when cant verify token
-      const decode = jwt.verify(maciToken, process.env.JWT_SECRET);
+      const workspaceToken = authorisationHeader.replace("Bearer ", "");
+      // verify the token was created with workspace secret
+      // removed error check as causing issues. need to revisit and show error when can't verify token
+      const decode = jwt.verify(workspaceToken, process.env.JWT_SECRET);
       console.log(decode);
       const user_role = decode.role;
       console.log(user_role);
@@ -52,4 +52,4 @@ function verifyMaciToken(req, res, next) {
   }
 }
 
-module.exports = verifyMaciToken;
+module.exports = verifyWorkspaceToken;
