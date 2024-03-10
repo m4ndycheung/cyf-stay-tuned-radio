@@ -11,6 +11,8 @@ const UpdateSpotifyPlaylistButton = ({ userRole }) => {
       });
       const updateSpotifyResponse = await updateSpotifyRequest.json();
       alert(updateSpotifyResponse.message);
+    } else {
+      alert("You are not Logged in");
     }
   }
   return (
