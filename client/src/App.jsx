@@ -30,12 +30,12 @@ function App() {
   return (
     <>
       <Background />
-      <Header isLoggedIn={isLoggedIn} key={isLoggedIn} />
+      <Header userRole={userRole} key={userRole} />
       {/* <Home />
       <About /> */}
       <EmbeddedPlayer />
-      {isLoggedIn ? <AddSongForm /> : <></>}
-      <UpdateSpotifyPlaylistButton />
+      {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
+      {userRole === "admin" ? <UpdateSpotifyPlaylistButton /> : <></>}
     </>
   );
 }
