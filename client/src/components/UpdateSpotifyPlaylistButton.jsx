@@ -1,10 +1,10 @@
 const UpdateSpotifyPlaylistButton = () => {
-  function test() {
+  function handleClickSpotifyUpdate() {
     console.log("Clicked");
   }
   return (
     <>
-      <button className="btn btn-primary" onClick={test}>
+      <button className="btn btn-primary" onClick={handleClickSpotifyUpdate}>
         Update Spotify Playlist
       </button>
     </>
