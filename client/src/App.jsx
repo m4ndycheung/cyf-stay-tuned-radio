@@ -8,7 +8,7 @@ import Background from "./components/Background";
 import UpdateSpotifyPlaylistButton from "./components/UpdateSpotifyPlaylistButton";
 
 function App() {
-  const [isLoggedIn, setLogin] = useState(false);
+  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
     //getting token from query string sent from backend
