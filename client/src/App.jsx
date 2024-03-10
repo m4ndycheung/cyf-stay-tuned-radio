@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { jwtDecode } from "jwt-decode";
 import EmbeddedPlayer from "./components/EmbeddedPlayer";
 import AddSongForm from "./components/AddSongForm";
 import Header from "./components/header/Header";
@@ -20,8 +21,10 @@ function App() {
       //set session storage data for maciToken
       sessionStorage.setItem("maciToken", maciToken);
       console.log(`sessionStorageData: ${sessionStorage.getItem("maciToken")}`);
+      //decodes token and set userRole state to equal to role inside token
+      const decoded = jwtDecode(sessionStorage.getItem("maciToken"));
+      setUserRole(decoded.role);
     }
-    if (sessionStorage.getItem("maciToken") !== null) setLogin(true);
   }, []);
 
   return (
