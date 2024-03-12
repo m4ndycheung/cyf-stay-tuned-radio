@@ -5,6 +5,7 @@ import EmbeddedPlayer from "./components/EmbeddedPlayer";
 import AddSongForm from "./components/AddSongForm";
 import Header from "./components/header/Header";
 import Background from "./components/Background";
+import SpotifyFirstRunButton from "./components/SpotifyFirstRunButton";
 
 function App() {
   //getting token from query string sent from backend
@@ -31,6 +32,7 @@ function App() {
       <About /> */}
       <EmbeddedPlayer />
       {isLoggedIn ? <AddSongForm /> : <></>}
+      <SpotifyFirstRunButton />
     </>
   );
 }
