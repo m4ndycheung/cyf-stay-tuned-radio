@@ -21,13 +21,13 @@ function verifyMaciToken(req, res, next) {
         // verify the token was created with maci secret
         const decode = jwt.verify(maciToken, process.env.JWT_SECRET);
         console.log(decode);
-        const user_role = decode.role;
-        console.log(user_role);
+        const userRole = decode.role;
+        console.log(userRole);
         if (basicURLsRE.test(requestURL)) {
           next();
         }
         if (adminURLsRE.test(requestURL)) {
-          if (user_role === "admin") {
+          if (userRole === "admin") {
             next();
           } else {
             res.send({ message: "you are not authorised" });
