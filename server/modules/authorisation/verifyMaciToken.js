@@ -12,28 +12,30 @@ function verifyMaciToken(req, res, next) {
   if (basicURLsRE.test(requestURL) || adminURLsRE.test(requestURL)) {
     //   // get authorization part of header
     if (req.headers.authorization !== null) {
-      const authorisationHeader = req.headers.authorization;
-      console.log(authorisationHeader);
-      // remove Bearer to only get the JWT
-      const maciToken = authorisationHeader.replace("Bearer ", "");
-      // removed error check as causing issues. need to revisit and show error when cant verify token
-      // verify the token was created with maci secret
-      const decode = jwt.verify(maciToken, process.env.JWT_SECRET);
-      console.log(decode);
-      const user_role = decode.role;
-      console.log(user_role);
-      if (basicURLsRE.test(requestURL)) {
-        next();
-      }
-      if (adminURLsRE.test(requestURL)) {
-        if (user_role === "admin") {
+      if (req.headers.authorization !== undefined) {
+        const authorisationHeader = req.headers.authorization;
+        console.log(`BOOP ${authorisationHeader}`);
+        // remove Bearer to only get the JWT
+        const maciToken = authorisationHeader.replace("Bearer ", "");
+        // removed error check as causing issues. need to revisit and show error when cant verify token
+        // verify the token was created with maci secret
+        const decode = jwt.verify(maciToken, process.env.JWT_SECRET);
+        console.log(decode);
+        const user_role = decode.role;
+        console.log(user_role);
+        if (basicURLsRE.test(requestURL)) {
           next();
-        } else {
-          res.send({ message: "you are not authorised" });
         }
+        if (adminURLsRE.test(requestURL)) {
+          if (user_role === "admin") {
+            next();
+          } else {
+            res.send({ message: "you are not authorised" });
+          }
+        }
+      } else {
+        res.send({ message: "no header" });
       }
-    } else {
-      res.send({ message: "no header" });
     }
   } else {
     next();
