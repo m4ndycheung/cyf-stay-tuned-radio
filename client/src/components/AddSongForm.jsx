@@ -33,9 +33,9 @@ export default function AddSongForm() {
   }
 
   function renderSearchResults(results) {
-    return results.map((item, index) => (
+    return results.map((item) => (
       <SearchResultCard
-        key={index}
+        key={item.songURI}
         trackName={item.trackName}
         artistName={item.artistName}
         songURI={item.songURI}
