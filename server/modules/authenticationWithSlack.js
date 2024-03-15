@@ -9,7 +9,7 @@ const myIdentifier = createIdentifier();
 
 const authenticationWithSlack = async function (req, res) {
   const state = await myIdentifier.generate();
-  console.log(`generated state: ${state}`);
+  // console.log(`generated state: ${state}`);
   const queryParams = querystring.stringify({
     client_id: slack_client_id,
     response_type: "code",
@@ -17,7 +17,7 @@ const authenticationWithSlack = async function (req, res) {
     state: state,
     scope: scope,
   });
-  console.log(queryParams);
+  // console.log(queryParams);
   res.redirect(`https://slack.com/openid/connect/authorize?${queryParams}`);
 };
 
