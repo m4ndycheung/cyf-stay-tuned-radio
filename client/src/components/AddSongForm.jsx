@@ -17,7 +17,7 @@ export default function AddSongForm() {
     });
   }
 
-  function handleSearch() {
+  async function handleSearch(event) {
     event.preventDefault();
     console.log("clicked");
   }
