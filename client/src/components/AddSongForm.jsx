@@ -67,6 +67,7 @@ export default function AddSongForm() {
               inputID="search-query"
               handleChangeEventFormInput={setSearchQuery}
             />
+            <div></div>
             <button
               type="submit"
               className="btn btn-primary"
@@ -74,21 +75,7 @@ export default function AddSongForm() {
             >
               Search
             </button>
-            {/* <FormTextInput
-              inputName="Artist"
-              inputID="artist"
-              handleChangeEventFormInput={handleChangeEventFormInput}
-            />
-            <FormTextInput
-              inputName="Song Title"
-              inputID="song_title"
-              handleChangeEventFormInput={handleChangeEventFormInput}
-            />
-            <FormTextInput
-              inputName="Spotify URL"
-              inputID="spotify_url"
-              handleChangeEventFormInput={handleChangeEventFormInput}
-            /> */}
+
             {/* <button
               type="submit"
               className="btn btn-primary"
