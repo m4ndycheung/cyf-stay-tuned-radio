@@ -50,6 +50,14 @@ export default function AddSongForm() {
         <Collapse in={open}>
           <form className="m-2 p-3">
             <FormTextInput
+              inputName="Search Query"
+              inputID="search-query"
+              handleChangeEventFormInput={setSearchQuery}
+            />
+            <button type="submit" className="btn btn-primary">
+              Search
+            </button>
+            <FormTextInput
               inputName="Artist"
               inputID="artist"
               handleChangeEventFormInput={handleChangeEventFormInput}
