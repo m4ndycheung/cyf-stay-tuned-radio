@@ -7,7 +7,7 @@ import SearchResultCard from "./SearchResultCard";
 export default function AddSongForm() {
   const [formData, setFormData] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState();
+  const [searchResults, setSearchResults] = useState([]);
   const server_url = import.meta.env.VITE_SERVER_URL;
 
   // function handleChangeEventFormInput(key, value) {
