@@ -10,14 +10,14 @@ export default function AddSongForm() {
   const [searchResults, setSearchResults] = useState();
   const server_url = import.meta.env.VITE_SERVER_URL;
 
-  function handleChangeEventFormInput(key, value) {
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [key]: value,
-      };
-    });
-  }
+  // function handleChangeEventFormInput(key, value) {
+  //   setFormData((prevFormData) => {
+  //     return {
+  //       ...prevFormData,
+  //       [key]: value,
+  //     };
+  //   });
+  // }
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -32,9 +32,17 @@ export default function AddSongForm() {
     setSearchResults(searchResponse);
   }
 
-  // const searchResultsElements = searchResults.map((result) =>
-  //   console.log(result)
-  // );
+  function renderSearchResults(results) {
+    return results.map((item, index) => (
+      <SearchResultCard
+        key={index}
+        trackName={item.trackName}
+        artistName={item.artistName}
+        songURI={item.songURI}
+        imageURL={item.imageURL}
+      />
+    ));
+  }
 
   // Refactor fetch call to add songs so the JWT token is sent together with the POST request - REQUIREMENT
   async function submitFormData(event) {
@@ -72,7 +80,9 @@ export default function AddSongForm() {
               inputID="search-query"
               handleChangeEventFormInput={setSearchQuery}
             />
-
+            <div className="search-results-container">
+              {renderSearchResults(searchResults)}
+            </div>
             <button
               type="submit"
               className="btn btn-primary"
@@ -80,20 +90,6 @@ export default function AddSongForm() {
             >
               Search
             </button>
-
-            {searchResults && searchResults.length > 0 && (
-              <div className="card-container">
-                {searchResults.map((item, index) => (
-                  <SearchResultCard
-                    key={index}
-                    trackName={item.trackName}
-                    artistName={item.artistName}
-                    songURI={item.songURI}
-                    imageURL={item.imageURL}
-                  />
-                ))}
-              </div>
-            )}
 
             {/* <button
               type="submit"
