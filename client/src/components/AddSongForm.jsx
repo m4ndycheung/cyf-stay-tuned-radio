@@ -17,6 +17,11 @@ export default function AddSongForm() {
     });
   }
 
+  function handleSearch() {
+    event.preventDefault();
+    console.log("clicked");
+  }
+
   // ********I will need this to submit the selected song to the DB
   // Refactor fetch call to add songs so the JWT token is sent together with the POST request - REQUIREMENT
   async function submitFormData(event) {
@@ -54,7 +59,11 @@ export default function AddSongForm() {
               inputID="search-query"
               handleChangeEventFormInput={setSearchQuery}
             />
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleSearch}
+            >
               Search
             </button>
             <FormTextInput
