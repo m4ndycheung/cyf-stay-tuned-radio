@@ -12,7 +12,7 @@ const exchangeRefreshForAccessToken = async function (req, res) {
   );
 
   const storedRefreshToken = result.rows[0];
-  console.log(storedRefreshToken);
+  console.log(`refresh token stored: ${storedRefreshToken}`);
 
   if (!storedRefreshToken) {
     throw new Error("No refresh token found in DB");
@@ -36,7 +36,7 @@ const exchangeRefreshForAccessToken = async function (req, res) {
   const response = await fetch(apiURL, authOptions);
 
   const responseBody = await response.json();
-  console.log(responseBody);
+  // console.log(responseBody);
 
   const accessToken = responseBody.access_token;
 
