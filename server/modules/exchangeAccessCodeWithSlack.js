@@ -10,7 +10,7 @@ const myIdentifier = createIdentifier();
 
 const exchangeAccessCodeWithSlack = async function (req, res) {
   const state = req.query.state;
-  console.log(`State passed to validate: ${state}`);
+  // console.log(`State passed to validate: ${state}`);
   if (!state || !(await myIdentifier.validate(state))) {
     return res.status(400).send("Invalid state parameter");
   }
@@ -23,11 +23,11 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
       grant_type: "authorization_code",
       code: code,
     });
-    console.log("My token is:", token);
+    // console.log("My token is:", token);
     let userAccessToken = token.access_token;
     const tokenWiredClient = new WebClient(userAccessToken);
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
-    console.log(`UserINFO here: ${userInfo}`);
+    // console.log(`UserINFO here: ${userInfo}`);
 
     //checks if user is part of workspace and if true, create JWT and redirect user to frontend with token
     const teamVerificationName = process.env.SLACK_WORKSPACE_NAME;
