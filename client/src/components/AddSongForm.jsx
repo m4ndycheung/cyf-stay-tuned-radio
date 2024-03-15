@@ -5,6 +5,7 @@ import "./AddSongForm.css";
 
 export default function AddSongForm() {
   const [formData, setFormData] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
   const server_url = import.meta.env.VITE_SERVER_URL;
 
   function handleChangeEventFormInput(key, value) {
@@ -16,6 +17,7 @@ export default function AddSongForm() {
     });
   }
 
+  // ********I will need this to submit the selected song to the DB
   // Refactor fetch call to add songs so the JWT token is sent together with the POST request - REQUIREMENT
   async function submitFormData(event) {
     event.preventDefault();
