@@ -27,7 +27,7 @@ export default function AddSongForm() {
       `${server_url}/search?query=${searchQuery}`
     );
     const searchResponse = await searchRequest.json();
-    console.log(searchResponse);
+    // console.log(searchResponse);
 
     setSearchResults(searchResponse);
   }
