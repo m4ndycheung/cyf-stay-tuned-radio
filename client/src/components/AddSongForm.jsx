@@ -2,6 +2,7 @@ import { useState } from "react";
 import FormTextInput from "./FormTextInput";
 import Collapse from "react-bootstrap/Collapse";
 import "./AddSongForm.css";
+import SearchResultCard from "./SearchResultCard";
 
 export default function AddSongForm() {
   const [formData, setFormData] = useState({});
@@ -30,6 +31,10 @@ export default function AddSongForm() {
 
     setSearchResults(searchResponse);
   }
+
+  // const searchResultsElements = searchResults.map((result) =>
+  //   console.log(result)
+  // );
 
   // Refactor fetch call to add songs so the JWT token is sent together with the POST request - REQUIREMENT
   async function submitFormData(event) {
@@ -67,7 +72,7 @@ export default function AddSongForm() {
               inputID="search-query"
               handleChangeEventFormInput={setSearchQuery}
             />
-            <div></div>
+
             <button
               type="submit"
               className="btn btn-primary"
@@ -75,6 +80,20 @@ export default function AddSongForm() {
             >
               Search
             </button>
+
+            {searchResults && searchResults.length > 0 && (
+              <div className="card-container">
+                {searchResults.map((item, index) => (
+                  <SearchResultCard
+                    key={index}
+                    trackName={item.trackName}
+                    artistName={item.artistName}
+                    songURI={item.songURI}
+                    imageURL={item.imageURL}
+                  />
+                ))}
+              </div>
+            )}
 
             {/* <button
               type="submit"
