@@ -2,7 +2,8 @@ const SpotifyFirstRunButton = () => {
   const backend_server = import.meta.env.VITE_SERVER_URL;
 
   async function handleClickSpotifyFirstRun() {
-    const getSpotifyAccessAndRefreshToken = await fetch(
+    console.log(sessionStorage.getItem("maciToken"));
+    const getSpotifyAuthorisationURLRequest = await fetch(
       `${backend_server}/login`,
       {
         method: "GET",
@@ -11,8 +12,10 @@ const SpotifyFirstRunButton = () => {
         },
       }
     );
-    const updateTokenResponse = await getSpotifyAccessAndRefreshToken.json();
-    alert(updateTokenResponse.message);
+    const spotifyAuthorisationResponse =
+      await getSpotifyAuthorisationURLRequest.json();
+    const getSpotifyAuthorisationURL = spotifyAuthorisationResponse.link;
+    open(getSpotifyAuthorisationURL);
   }
   return (
     <button className="btn btn-primary" onClick={handleClickSpotifyFirstRun}>
