@@ -21,7 +21,9 @@ function App() {
     if (workspaceToken !== null) {
       //set session storage data for workspaceToken
       sessionStorage.setItem("workspaceToken", workspaceToken);
-      console.log(`sessionStorageData: ${sessionStorage.getItem("workspaceToken")}`);
+      console.log(
+        `sessionStorageData: ${sessionStorage.getItem("workspaceToken")}`
+      );
       //decodes token and set userRole state to equal to role inside token
       const decoded = jwtDecode(sessionStorage.getItem("workspaceToken"));
       setUserRole(decoded.role);
@@ -37,12 +39,14 @@ function App() {
       {/* <Home />
       <About /> */}
       <EmbeddedPlayer />
-   
+
       {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
       {userRole === "admin" ? (
-       <UpdateSpotifyPlaylistButton userRole={userRole} />
-      <SpotifyFirstRunButton />
-    ) : (
+        <>
+          <UpdateSpotifyPlaylistButton userRole={userRole} />
+          <SpotifyFirstRunButton />
+        </>
+      ) : (
         <></>
       )}
     </>
