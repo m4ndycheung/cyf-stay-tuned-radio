@@ -23,7 +23,7 @@ export default function AddSongForm() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${sessionStorage.getItem("maciToken")}`,
+        Authorization: `Bearer ${sessionStorage.getItem("workspaceToken")}`,
       },
       body: JSON.stringify(formData),
     });

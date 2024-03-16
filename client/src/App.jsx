@@ -15,16 +15,17 @@ function App() {
     //getting token from query string sent from backend
     const search = window.location.search;
     const params = new URLSearchParams(search);
-    const maciToken = params.get("token");
+    const workspaceToken = params.get("token");
     // check if query return equals null and if it does not, set sessionstorage to maciToken
-    if (maciToken !== null) {
-      //set session storage data for maciToken
-      sessionStorage.setItem("maciToken", maciToken);
-      console.log(`sessionStorageData: ${sessionStorage.getItem("maciToken")}`);
+    if (workspaceToken !== null) {
+      //set session storage data for workspaceToken
+      sessionStorage.setItem("workspaceToken", workspaceToken);
+      console.log(`sessionStorageData: ${sessionStorage.getItem("workspaceToken")}`);
       //decodes token and set userRole state to equal to role inside token
-      const decoded = jwtDecode(sessionStorage.getItem("maciToken"));
+      const decoded = jwtDecode(sessionStorage.getItem("workspaceToken"));
       setUserRole(decoded.role);
     }
+    if (sessionStorage.getItem("workspaceToken") !== null) setLogin(true);
   }, []);
 
   return (
