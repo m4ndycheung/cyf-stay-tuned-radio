@@ -35,7 +35,11 @@ function App() {
       <About /> */}
       <EmbeddedPlayer />
       {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
-      {userRole === "admin" ? <UpdateSpotifyPlaylistButton /> : <></>}
+      {userRole === "admin" ? (
+        <UpdateSpotifyPlaylistButton userRole={userRole} />
+      ) : (
+        <></>
+      )}
     </>
   );
 }
