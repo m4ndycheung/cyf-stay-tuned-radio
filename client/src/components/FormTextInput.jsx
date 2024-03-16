@@ -3,9 +3,7 @@ import "./FormTextInput.css";
 const FormTextInput = ({ inputName, inputID, handleChangeEventFormInput }) => {
   return (
     <div className="form-group">
-      <label htmlFor={inputID} className="form_input_label">
-        {inputName}:
-      </label>
+      <label htmlFor={inputID} className="form_input_label"></label>
       <input
         type="text"
         id={inputID}
