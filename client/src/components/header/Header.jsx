@@ -2,7 +2,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-const Header = ({ isLoggedIn }) => {
+
+const Header = ({ userRole }) => {
   const server_url = import.meta.env.VITE_SERVER_URL;
   const frontend_url = import.meta.env.VITE_FRONTEND_URL;
   const workspace_name = import.meta.env.VITE_SLACK_WORKSPACE_NAME;
@@ -27,7 +28,7 @@ const Header = ({ isLoggedIn }) => {
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
-            {isLoggedIn ? (
+            {userRole ? (
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             ) : (
               <Nav.Link onClick={handleLogin}>Login</Nav.Link>

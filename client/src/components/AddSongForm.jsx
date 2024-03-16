@@ -28,7 +28,7 @@ export default function AddSongForm() {
       body: JSON.stringify(formData),
     });
     const response = await sendSongsToDB.json();
-    alert(response.result);
+    alert(response.message);
   }
 
   const [open, setOpen] = useState(false);

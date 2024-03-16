@@ -29,14 +29,15 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
     console.log(`UserINFO here: ${userInfo}`);
 
-    //checks if user is part of team-workspace and if true, create JWT and redirect user to frontend with token
-    const teamVerificationName = "team-workspace";
+
+    //checks if user is part of workspace and if true, create JWT and redirect user to frontend with token
+    const teamVerificationName = process.env.SLACK_WORKSPACE_NAME;
     const userTeamDomain = userInfo["https://slack.com/team_domain"];
     const slackUserID = userInfo["https://slack.com/user_id"];
     const groupAdminID = process.env.SLACK_ADMIN_USER_ID;
 
     if (userTeamDomain === teamVerificationName) {
-      // check to see if user is team member in order have authorisation to add songs
+      // check to see if user is workspace member in order have authorisation to add songs
       const userObject = {
         user_id: userInfo["https://slack.com/user_id"],
         role: slackUserID === groupAdminID ? "admin" : "basic", // check to see if user is team admin in order have authorisation to reset daily playlist
