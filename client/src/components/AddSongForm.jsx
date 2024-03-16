@@ -8,16 +8,13 @@ export default function AddSongForm() {
   const [formData, setFormData] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedResult, setSelectedResult] = useState("");
   const server_url = import.meta.env.VITE_SERVER_URL;
 
-  // function handleChangeEventFormInput(key, value) {
-  //   setFormData((prevFormData) => {
-  //     return {
-  //       ...prevFormData,
-  //       [key]: value,
-  //     };
-  //   });
-  // }
+  // To view formData as there is some lag with storing the data - import useEffect to test
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   async function handleSearch(event) {
     event.preventDefault();
@@ -32,6 +29,17 @@ export default function AddSongForm() {
     setSearchResults(searchResponse);
   }
 
+  function handleCardClick(trackName, artistName, songURI, imageURL) {
+    setSelectedResult(songURI);
+
+    setFormData({
+      song_title: trackName,
+      artist: artistName,
+      spotify_url: songURI,
+      imageURL: imageURL,
+    });
+  }
+
   function renderSearchResults(results) {
     return results.map((item) => (
       <SearchResultCard
@@ -40,6 +48,8 @@ export default function AddSongForm() {
         artistName={item.artistName}
         songURI={item.songURI}
         imageURL={item.imageURL}
+        isSelected={selectedResult === item.songURI}
+        onClick={handleCardClick}
       />
     ));
   }
@@ -81,7 +91,6 @@ export default function AddSongForm() {
                 inputID="search-query"
                 handleChangeEventFormInput={setSearchQuery}
               />
-
               <button
                 type="submit"
                 className="btn btn-primary"
@@ -90,18 +99,16 @@ export default function AddSongForm() {
                 Search
               </button>
             </div>
-
             <div className="search-results-container">
               {renderSearchResults(searchResults)}
             </div>
-
-            {/* <button
+            <button
               type="submit"
               className="btn btn-primary"
               onClick={submitFormData}
             >
               Submit
-            </button> */}
+            </button>
           </form>
         </Collapse>
       </div>
