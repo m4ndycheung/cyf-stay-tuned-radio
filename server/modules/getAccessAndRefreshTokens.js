@@ -49,7 +49,10 @@ const getAccessAndRefreshTokens = async function (req, res) {
   // store refresh token in DB
   storeRefreshTokenInDB(refresh_token);
 
-  res.send(tokenData);
+  res.send({
+    message:
+      "success! exchanged code for access/refresh token and added to database",
+  });
 };
 
 module.exports = getAccessAndRefreshTokens;

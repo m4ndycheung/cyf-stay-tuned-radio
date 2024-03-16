@@ -6,6 +6,7 @@ import EmbeddedPlayer from "./components/EmbeddedPlayer";
 import AddSongForm from "./components/AddSongForm";
 import Header from "./components/header/Header";
 import Background from "./components/Background";
+import SpotifyFirstRunButton from "./components/SpotifyFirstRunButton";
 import UpdateSpotifyPlaylistButton from "./components/UpdateSpotifyPlaylistButton";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       const decoded = jwtDecode(sessionStorage.getItem("workspaceToken"));
       setUserRole(decoded.role);
     }
+
     if (sessionStorage.getItem("workspaceToken") !== null) setLogin(true);
   }, []);
 
@@ -35,10 +37,12 @@ function App() {
       {/* <Home />
       <About /> */}
       <EmbeddedPlayer />
+   
       {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
       {userRole === "admin" ? (
-        <UpdateSpotifyPlaylistButton userRole={userRole} />
-      ) : (
+       <UpdateSpotifyPlaylistButton userRole={userRole} />
+      <SpotifyFirstRunButton />
+    ) : (
         <></>
       )}
     </>
