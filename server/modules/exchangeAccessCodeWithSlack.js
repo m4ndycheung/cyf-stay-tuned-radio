@@ -29,8 +29,8 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
     const userInfo = await tokenWiredClient.openid.connect.userInfo();
     console.log(`UserINFO here: ${userInfo}`);
 
-    //checks if user is part of team-maci and if true, create JWT and redirect user to frontend with token
-    const teamVerificationName = "team-maci";
+    //checks if user is part of team-workspace and if true, create JWT and redirect user to frontend with token
+    const teamVerificationName = "team-workspace";
     const userTeamDomain = userInfo["https://slack.com/team_domain"];
     const slackUserID = userInfo["https://slack.com/user_id"];
     const groupAdminID = process.env.SLACK_ADMIN_USER_ID;
@@ -45,10 +45,10 @@ const exchangeAccessCodeWithSlack = async function (req, res) {
       const jwtSecret = process.env.JWT_SECRET;
 
       // create jwt for access to stay tuned radio (our) website
-      const teamMaciToken = jwt.sign(userObject, jwtSecret);
+      const teamWorkspaceToken = jwt.sign(userObject, jwtSecret);
       // add FRONTEND_URL to readme and .env
-      //teamMaciToken is sent to frontend using the querystring
-      res.redirect(`${process.env.FRONTEND_URL}?token=${teamMaciToken}`);
+      //teamWorkspaceToken is sent to frontend using the querystring
+      res.redirect(`${process.env.FRONTEND_URL}?token=${teamWorkspaceToken}`);
     } else {
       res.redirect(`${process.env.FRONTEND_URL}`);
     }

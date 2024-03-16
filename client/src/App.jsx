@@ -11,17 +11,19 @@ function App() {
   //getting token from query string sent from backend
   const search = window.location.search;
   const params = new URLSearchParams(search);
-  const maciToken = params.get("token");
-  // check if query return equals null and if it does not, set sessionstorage to maciToken
-  if (maciToken !== null) {
-    //set session storage data for maciToken
-    sessionStorage.setItem("maciToken", maciToken);
-    console.log(`sessionStorageData: ${sessionStorage.getItem("maciToken")}`);
+  const workspaceToken = params.get("token");
+  // check if query return equals null and if it does not, set sessionstorage to workspaceToken
+  if (workspaceToken !== null) {
+    //set session storage data for workspaceToken
+    sessionStorage.setItem("workspaceToken", workspaceToken);
+    console.log(
+      `sessionStorageData: ${sessionStorage.getItem("workspaceToken")}`
+    );
   }
 
   const [isLoggedIn, setLogin] = useState(false);
   useEffect(() => {
-    if (sessionStorage.getItem("maciToken") !== null) setLogin(true);
+    if (sessionStorage.getItem("workspaceToken") !== null) setLogin(true);
   }, []);
 
   return (
