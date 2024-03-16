@@ -29,7 +29,7 @@ function App() {
       setUserRole(decoded.role);
     }
 
-    if (sessionStorage.getItem("workspaceToken") !== null) setLogin(true);
+    if (sessionStorage.getItem("workspaceToken") !== null) setUserRole(true);
   }, []);
 
   return (
