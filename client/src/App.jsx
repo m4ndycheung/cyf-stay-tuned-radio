@@ -28,8 +28,6 @@ function App() {
       const decoded = jwtDecode(sessionStorage.getItem("workspaceToken"));
       setUserRole(decoded.role);
     }
-
-    if (sessionStorage.getItem("workspaceToken") !== null) setUserRole(true);
   }, []);
 
   return (
