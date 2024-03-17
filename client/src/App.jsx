@@ -8,6 +8,7 @@ import Header from "./components/header/Header";
 import Background from "./components/Background";
 import SpotifyFirstRunButton from "./components/SpotifyFirstRunButton";
 import UpdateSpotifyPlaylistButton from "./components/UpdateSpotifyPlaylistButton";
+import MaintenancePanel from "./components/MaintenancePanel";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -41,6 +42,7 @@ function App() {
       {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
       {userRole === "admin" ? (
         <>
+          <MaintenancePanel />
           <UpdateSpotifyPlaylistButton userRole={userRole} />
           <SpotifyFirstRunButton />
         </>
