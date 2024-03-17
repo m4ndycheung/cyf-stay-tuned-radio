@@ -12,14 +12,14 @@ const apiCallToAddSongsToDB = function (req, res) {
     .then(() => {
       res.status(201).send({
         result: "success",
-        message: `${song_name} by ${artist_name} added successfully, enjoy!`,
+        message: `${song_name} by ${artist_name} added successfully!`,
       });
     })
     .catch((err) => {
       console.log(err);
       res
         .status(400)
-        .send({ result: "failure", message: "Song could not be added" });
+        .send({ result: "failure", message: "Song could not be added." });
     });
 };
 
