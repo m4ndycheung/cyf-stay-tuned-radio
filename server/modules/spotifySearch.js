@@ -19,7 +19,7 @@ const searchForSongsOnSpotify = async function (req, res) {
 
   // GET request containing query params and access token
   const searchRequest = await fetch(
-    `https://api.spotify.com/v1/search?q=${query}&type=track&limit=5`,
+    `https://api.spotify.com/v1/search?q=${query}&type=track&limit=10`,
     {
       method: "GET",
       headers: {
@@ -33,7 +33,7 @@ const searchForSongsOnSpotify = async function (req, res) {
   // .json() parses the response into a JS object
   const searchResponse = await searchRequest.json();
 
-  console.log(searchResponse);
+  // console.log(searchResponse);
   // extract items array from tracks
   const searchItems = searchResponse.tracks.items;
   // console.log(searchItems);
