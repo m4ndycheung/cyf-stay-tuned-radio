@@ -19,10 +19,15 @@ export default function MaintenancePanel({ userRole }) {
       </button>
       <div className="rounded container bg-body-tertiary">
         <Collapse in={open}>
-          <div>this is hidden</div>
+          <div className="mx-3 p-3 row">
+            <div className="col-sm border p-3">
+              <UpdateSpotifyPlaylistButton userRole={userRole} />
+            </div>
+            <div className="col-sm border p-3">
+              <SpotifyFirstRunButton />
+            </div>
+          </div>
         </Collapse>
-        <UpdateSpotifyPlaylistButton userRole={userRole} />
-        <SpotifyFirstRunButton />
       </div>
     </>
   );
