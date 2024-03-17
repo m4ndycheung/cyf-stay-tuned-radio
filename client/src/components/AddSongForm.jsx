@@ -90,7 +90,7 @@ export default function AddSongForm() {
           <form className="m-3 p-3">
             <div className="row">
               <FormTextInput
-                inputName="Search Query"
+                inputName="What song would you like to add?"
                 inputID="search-query"
                 handleChangeEventFormInput={setSearchQuery}
               />
@@ -114,7 +114,7 @@ export default function AddSongForm() {
               className="btn btn-primary"
               onClick={submitFormData}
             >
-              Submit
+              Submit Song
             </button>
           </form>
         </Collapse>
