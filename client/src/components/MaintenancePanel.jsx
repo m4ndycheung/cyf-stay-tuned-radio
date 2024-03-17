@@ -1,3 +1,11 @@
-export default function MaintenancePanel() {
-  return <div>Maintenance Panel</div>;
+import SpotifyFirstRunButton from "./SpotifyFirstRunButton";
+import UpdateSpotifyPlaylistButton from "./UpdateSpotifyPlaylistButton";
+
+export default function MaintenancePanel({ userRole }) {
+  return (
+    <>
+      <UpdateSpotifyPlaylistButton userRole={userRole} />
+      <SpotifyFirstRunButton />
+    </>
+  );
 }
