@@ -15,7 +15,7 @@ function createIdentifier() {
   //this is checking if the id is valid or if expired
   async function validate(state) {
     // Checking activeID is storing the right data
-    console.log(`activeID state store: ${JSON.stringify(activeID)}`);
+    // console.log(`activeID state store: ${JSON.stringify(activeID)}`);
     const expiresAt = activeID[state];
     if (expiresAt && Date.now() <= expiresAt) {
       delete activeID[state];
