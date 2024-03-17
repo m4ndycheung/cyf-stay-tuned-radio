@@ -6,7 +6,7 @@ const UpdateSpotifyPlaylistButton = ({ userRole }) => {
       const updateSpotifyRequest = await fetch(`${backend_server}/update`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("maciToken")}`,
+          Authorization: `Bearer ${sessionStorage.getItem("workspaceToken")}`,
         },
       });
       const updateSpotifyResponse = await updateSpotifyRequest.json();
