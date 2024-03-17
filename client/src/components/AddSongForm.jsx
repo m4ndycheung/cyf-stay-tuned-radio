@@ -87,22 +87,26 @@ export default function AddSongForm() {
       </button>
       <div className="rounded container bg-body-tertiary">
         <Collapse in={open}>
-          <form className="m-2 p-3">
-            <div>
+          <form className="m-3 p-3">
+            <div className="row">
               <FormTextInput
                 inputName="Search Query"
                 inputID="search-query"
                 handleChangeEventFormInput={setSearchQuery}
               />
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={handleSearch}
-              >
-                Search
-              </button>
+
+              <div className="col-auto">
+                <button
+                  type="submit"
+                  className="btn btn-primary "
+                  onClick={handleSearch}
+                >
+                  Search
+                </button>
+              </div>
             </div>
-            <div className="search-results-container">
+
+            <div className=" mb-3 search-results-container">
               {renderSearchResults(searchResults)}
             </div>
             <button
