@@ -18,7 +18,7 @@ const SpotifyFirstRunButton = () => {
     open(getSpotifyAuthorisationURL);
   }
   return (
-    <button className="btn btn-primary" onClick={handleClickSpotifyFirstRun}>
+    <button className="btn btn-warning" onClick={handleClickSpotifyFirstRun}>
       Get Access and Refresh Token
     </button>
   );
