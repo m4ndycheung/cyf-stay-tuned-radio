@@ -26,7 +26,8 @@ const initiateLogin = function (req, res) {
     scope: scope,
   });
 
-  res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+  const link = `https://accounts.spotify.com/authorize?${queryParams}`;
+  res.send({ link: link });
 };
 
 module.exports = initiateLogin;

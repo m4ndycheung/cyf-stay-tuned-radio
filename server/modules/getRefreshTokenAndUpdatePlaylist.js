@@ -19,10 +19,9 @@ const getRefreshAndUpdatePlaylist = async function (req, res) {
   const getRandomSongs = await fetch(`${serverURL}/songs/random`);
   const randomSongs = await getRandomSongs.json();
   addTracksToPlaylist(newAccessToken, randomSongs, playlistID);
-  res.send(
-    `<p>Boop. Playlist Updated.</p>
-    <a href='https://open.spotify.com/playlist/${playlistID}' target='blank'>Check the playlist here</a>`
-  );
+  res.send({
+    message: `Boop. Playlist Updated. Link: https://open.spotify.com/playlist/${playlistID}`,
+  });
 };
 
 module.exports = getRefreshAndUpdatePlaylist;
