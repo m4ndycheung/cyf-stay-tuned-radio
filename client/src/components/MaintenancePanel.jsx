@@ -21,9 +21,14 @@ export default function MaintenancePanel({ userRole }) {
         <Collapse in={open}>
           <div className="mx-3 p-3 row">
             <div className="col-sm border p-3">
+              <p>Click this button to update spotify playlist</p>
               <UpdateSpotifyPlaylistButton userRole={userRole} />
             </div>
             <div className="col-sm border p-3">
+              <p>
+                Click this button to get access and refresh token for spotify
+                API and populate database
+              </p>
               <SpotifyFirstRunButton />
             </div>
           </div>
