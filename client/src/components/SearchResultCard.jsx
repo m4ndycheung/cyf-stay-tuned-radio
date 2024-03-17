@@ -1,5 +1,7 @@
 import React from "react";
 
+// This is the card that will be rendered when a search has been made
+// It takes various properties from the mapped array of objects in AddSongForm
 function SearchResultCard({
   key,
   trackName,
