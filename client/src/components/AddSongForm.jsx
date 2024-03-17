@@ -16,30 +16,20 @@ export default function AddSongForm() {
   //   console.log(formData);
   // }, [formData]);
 
+  // sends searchQuery to backend then sets the search results in useState
   async function handleSearch(event) {
     event.preventDefault();
-    console.log("clicked");
-    console.log(searchQuery);
     const searchRequest = await fetch(
       `${server_url}/search?query=${searchQuery}`
     );
     const searchResponse = await searchRequest.json();
-    // console.log(searchResponse);
 
     setSearchResults(searchResponse);
   }
 
-  function handleCardClick(trackName, artistName, songURI, imageURL) {
-    setSelectedResult(songURI);
-
-    setFormData({
-      song_title: trackName,
-      artist: artistName,
-      spotify_url: songURI,
-      imageURL: imageURL,
-    });
-  }
-
+  // maps over searchResults (the results object returned by Spotify API) and renders result cards using each item in the array
+  // whenever the searchResults is updated, component will re-render results
+  // if selectedResult matches item.songURI, it will return true i.e. the card's selected and class will be applied in the component
   function renderSearchResults(results) {
     return results.map((item) => (
       <SearchResultCard
@@ -52,6 +42,19 @@ export default function AddSongForm() {
         onClick={handleCardClick}
       />
     ));
+  }
+
+  // setsSelectedResult stores the song URI so that it can be compared in the SearchResultCard
+  // stores song data in setFormData when the result is selected
+  function handleCardClick(trackName, artistName, songURI, imageURL) {
+    setSelectedResult(songURI);
+
+    setFormData({
+      song_title: trackName,
+      artist: artistName,
+      spotify_url: songURI,
+      imageURL: imageURL,
+    });
   }
 
   // Refactor fetch call to add songs so the JWT token is sent together with the POST request - REQUIREMENT
