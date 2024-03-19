@@ -101,7 +101,7 @@ Project Link: [https://github.com/m4ndycheung/cyf-stay-tuned-radio](https://gith
 
 - [![React][React.js]][React-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-- [![Postgres][Postgres]][Postgres-url]
+- [![Postgres][Postgres.com]][Postgres-url]
 - [![Node][Node.js]][Node-url]
 
 ## Other technology used
@@ -350,3 +350,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
+[Postgres.com]: https://img.shields.io/badge/postgresql-4169e1?style=for-the-badge&logo=postgresql&logoColor=white
+[Postgres-url]: https://www.postgresql.org/
+[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/en
