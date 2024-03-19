@@ -8,6 +8,7 @@ import Header from "./components/header/Header";
 import Background from "./components/Background";
 import SpotifyFirstRunButton from "./components/SpotifyFirstRunButton";
 import UpdateSpotifyPlaylistButton from "./components/UpdateSpotifyPlaylistButton";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -47,6 +48,7 @@ function App() {
       ) : (
         <></>
       )}
+      <Footer />
     </>
   );
 }
