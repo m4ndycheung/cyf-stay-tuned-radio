@@ -88,10 +88,10 @@ While our app is publicly available, exclusive access to certain features, such 
 
 ## Contact
 
-Christina Mifsud - [Github](https://github.com/christina-mifsud)
-Irianni Munoz - [Github](https://github.com/munozirianni1988)
-Mandy Cheung - [Github](https://github.com/m4ndycheung)
-Man Sang Sin - [Github](https://github.com/ManSangSin)
+- Christina Mifsud - [Github](https://github.com/christina-mifsud)
+- Irianni Munoz - [Github](https://github.com/munozirianni1988)
+- Mandy Cheung - [Github](https://github.com/m4ndycheung)
+- Man Sang Sin - [Github](https://github.com/ManSangSin)
 
 Project Link: [https://github.com/m4ndycheung/cyf-stay-tuned-radio](https://github.com/m4ndycheung/cyf-stay-tuned-radio)
 
@@ -106,11 +106,11 @@ Project Link: [https://github.com/m4ndycheung/cyf-stay-tuned-radio](https://gith
 
 ## Other technology used
 
-- Slack API
+- Slack API:
   The Slack API enables secure authentication, verifying users' team membership before granting access to additional features.
-- Spotify API
+- Spotify API:
   The Spotify API facilitates seamless integration, allowing our app to dynamically generate and update playlists based on community submissions.
-- JWT
+- JWT:
   We employ JSON Web Tokens (JWT) to facilitate secure transmission of user data between frontend and backend components. Following industry best practices, JWTs are issued upon user authentication, enabling subsequent requests without exposing sensitive tokens
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -213,13 +213,14 @@ To get a local copy up and running follow these not-so-simple steps.
     ```
 
 6.  Seed file is available in the data folder. This will create 2 tables:
-    `sh
+
+```sh
 tracks
 refresh_tokens_table
-`
-    The tracks table stores songs and information about the artists as well as the unique track id and the username of the user who submitted it.
+```
 
-tracks table:
+The tracks table stores songs and information about the artists as well as the unique track id and the username of the user who submitted it.
+**tracks table**:
 It has 6 columns consisting of:
 
 - id: which is automatically generated when a new song is added
@@ -228,10 +229,10 @@ It has 6 columns consisting of:
 - cyf_slack_username (optional): add your slack username
 - song_genre (optional): add the gene of your chosen song
 - spotify_song_id: on Spotify, click on your chosen song, and from the browser copy the highlighted bit from the example below:
-  https://open.spotify.com/track/**5fHXbmrx8mfOT1wfSa1Nc8**
+  https://open.spotify.com/track/5fHXbmrx8mfOT1wfSa1Nc8
 
-refresh tokens table:
-The refresh tokens table stores the refresh token provided by spotify which can then be exchanged for a new access token.
+**refresh tokens table**:
+The refresh tokens table stores (you guessed it!) the refresh token provided by spotify which can then be exchanged for a new access token.
 It has 2 columns consisting of:
 
 - id: which is automatically generated when a refresh token is added
@@ -258,7 +259,7 @@ To start:
    ngrok http 3001
    ```
 4. Copy the forwarding URL from ngrok CLI, it’ll look something like this: https://2e73-94-119-32-12.ngrok-free.app
-5. Append /slack/oauth_redirect to this URL i.e. https://2e73-94-119-32-12.ngrok-free.app/**slack/oauth_redirect**
+5. Append /slack/oauth_redirect to this URL i.e. https://2e73-94-119-32-12.ngrok-free.app/slack/oauth_redirect
 6. Paste into env file SLACK_REDIRECT_URI
 7. Go to https://api.slack.com/ and go to Oauth and Permissions tab and paste into Redirect URLs.
 8. Go to http://localhost:3001 to access the backend.
@@ -270,10 +271,10 @@ To start:
 
 ## Usage
 
-How to update the playlist
+**How to update the playlist**
 There’s a button for this sitting on the front page
 
-How to add songs to the database
+**How to add songs to the database**
 User needs to be logged in for the add songs form to be shown
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
