@@ -1,5 +1,6 @@
 import "./ExternalLink.css";
 
+// eslint-disable-next-line react/prop-types
 const ExternalLinks = ({ companyIcon, text, linkUrl }) => {
   return (
     // rel needs to be specified when target is used as security risk for older browsers

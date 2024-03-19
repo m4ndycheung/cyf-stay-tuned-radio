@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
 import "./OrganisationLinks.css";
 
 const OrganisationLink = ({
+  // eslint-disable-next-line react/prop-types
   organisationName,
   organisationText,
   organisationUrl,

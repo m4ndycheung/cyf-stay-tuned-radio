@@ -21,7 +21,7 @@ const teamLinkedInData = [
   {
     icon: linkedinIcon,
     text: "Mandy Cheung",
-    url: "https://www.https://www.linkedin.com/in/mandy-wtc/",
+    url: "https://www.linkedin.com/in/mandy-wtc/",
   },
   {
     icon: linkedinIcon,
@@ -38,7 +38,7 @@ const teamLinkedInData = [
 const projectData = {
   icon: githubIcon,
   text: "See source code on Github",
-  url: "https://github.com/ManSangSin/Rhythm-Code",
+  url: "https://github.com/m4ndycheung/cyf-stay-tuned-radio",
 };
 
 const organisationLinkElements = organisationLinksData.map((organisation) => {
@@ -73,9 +73,7 @@ const Footer = () => {
           </div>
           <div className="external-links-container">
             <div>
-              <p className="footer-medium-font">
-                Engineered by Team Rhythm Code
-              </p>
+              <p className="footer-medium-font">Engineered by Team MACI</p>
               {teamLinkedInElements}
             </div>
             <div>
