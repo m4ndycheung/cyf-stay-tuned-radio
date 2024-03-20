@@ -48,24 +48,20 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#contact">Contact</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+        <ul>
+          <li><a href="#prerequisites">Prerequisites</a></li>
+          <li><a href="#installation">Installation</a></li>
+        </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -88,10 +84,10 @@ While our app is publicly available, exclusive access to certain features, such 
 
 ## Contact
 
-- Christina Mifsud - [Github](https://github.com/christina-mifsud)
-- Irianni Munoz - [Github](https://github.com/munozirianni1988)
-- Mandy Cheung - [Github](https://github.com/m4ndycheung)
-- Man Sang Sin - [Github](https://github.com/ManSangSin)
+- Christina Mifsud: [Github](https://github.com/christina-mifsud) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
+- Irianni Munoz: [Github](https://github.com/munozirianni1988) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
+- Mandy Cheung: [Github](https://github.com/m4ndycheung) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
+- Man Sang Sin: [Github](https://github.com/ManSangSin) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
 
 Project Link: [https://github.com/m4ndycheung/cyf-stay-tuned-radio](https://github.com/m4ndycheung/cyf-stay-tuned-radio)
 
@@ -322,17 +318,17 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[contributors-url]: https://github.com/m4ndycheung/cyf-stay-tuned-radio/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[forks-url]: https://github.com/m4ndycheung/cyf-stay-tuned-radio/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/m4ndycheung/cyf-stay-tuned-radio/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/m4ndycheung/cyf-stay-tuned-radio/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-url]: https://github.com/m4ndycheung/cyf-stay-tuned-radio/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: #contact
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
