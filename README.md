@@ -84,10 +84,10 @@ While our app is publicly available, exclusive access to certain features, such 
 
 ## Contact
 
-- Christina Mifsud: [Github](https://github.com/christina-mifsud) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
-- Irianni Munoz: [Github](https://github.com/munozirianni1988) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
-- Mandy Cheung: [Github](https://github.com/m4ndycheung) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
-- Man Sang Sin: [Github](https://github.com/ManSangSin) - [LinkedIn](https://github.com/christina-mifsud) - [Email](https://github.com/christina-mifsud)
+- Christina Mifsud: [Github](https://github.com/christina-mifsud) - [LinkedIn](https://www.linkedin.com/in/christinamifsud/) - [Email](mailto:christina.mifsud@gmail.com)
+- Irianni Munoz: [Github](https://github.com/munozirianni1988) - [LinkedIn](https://www.linkedin.com/in/irianni-munoz-693a36164/) - [Email](mailto:munozirianni@gmail.com)
+- Mandy Cheung: [Github](https://github.com/m4ndycheung) - [LinkedIn](https://www.linkedin.com/in/mandy-wtc/) - [Email](mailto:mcheung.0822@gmail.com)
+- Man Sang Sin: [Github](https://github.com/ManSangSin) - [LinkedIn](https://www.linkedin.com/in/man-sang-sin/) - [Email](mailto:man.sang.sin@gmail.com)
 
 Project Link: [https://github.com/m4ndycheung/cyf-stay-tuned-radio](https://github.com/m4ndycheung/cyf-stay-tuned-radio)
 
