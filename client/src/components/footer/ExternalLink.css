@@ -1,0 +1,9 @@
+.externalLink {
+  display: flex;
+  gap: 20px;
+}
+
+.externalLink-icon {
+  width: 24px;
+  height: 24px;
+}
