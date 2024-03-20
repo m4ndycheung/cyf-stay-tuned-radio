@@ -102,12 +102,17 @@ Project Link: [https://github.com/m4ndycheung/cyf-stay-tuned-radio](https://gith
 
 ## Other technology used
 
-- Slack API:
-  The Slack API enables secure authentication, verifying users' team membership before granting access to additional features.
-- Spotify API:
-  The Spotify API facilitates seamless integration, allowing our app to dynamically generate and update playlists based on community submissions.
-- JWT:
-  We employ JSON Web Tokens (JWT) to facilitate secure transmission of user data between frontend and backend components. Following industry best practices, JWTs are issued upon user authentication, enabling subsequent requests without exposing sensitive tokens
+### Slack API
+
+The Slack API enables secure authentication, verifying users' team membership before granting access to additional features.
+
+### Spotify API
+
+The Spotify API facilitates seamless integration, allowing our app to dynamically generate and update playlists based on community submissions.
+
+### JWT
+
+We employ JSON Web Tokens (JWT) to facilitate secure transmission of user data between frontend and backend components. Following industry best practices, JWTs are issued upon user authentication, enabling subsequent requests without exposing sensitive tokens
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -120,95 +125,118 @@ To get a local copy up and running follow these not-so-simple steps.
 ### Prerequisites
 
 - npm
-  ```sh
-  npm install npm@latest -g
-  ```
-- Install ngrok <link>
-- Create a Slack app <link>
-- Create a Spotify app <link>
+
+```sh
+npm install npm@latest -g
+```
+
+- Install ngrok
+- Create a Slack app
+- Create a Spotify app
 - Create a Postgresql database
 
 ### Installation
 
 1.  Clone the repo
-    ```sh
-    git clone https://github.com/m4ndycheung/cyf-stay-tuned-radio.git
-    ```
-2.  Install NPM packages and dependencies
 
-    ```sh
-    npm install
-    ```
+```sh
+git clone https://github.com/m4ndycheung/cyf-stay-tuned-radio.git
+```
 
-3.  Create .env variable file in client folder
-    ```sh
-    VITE_SERVER_URL=http://localhost:3001
-    VITE_FRONTEND_URL=http://localhost:5173
-    ```
-4.  Create .env variable file in server folder
+2.  Install NPM packages and dependencies for both client and server
 
-    ```sh
-     # spotify credentials
-     SPOTIFY_CLIENT_ID=
-     SPOTIFY_CLIENT_SECRET=
-     SPOTIFY_REDIRECT_URI=
-     SPOTIFY_PLAYLIST_ID=
+```sh
+npm install
+```
 
-     # slack credentials
-     SLACK_CLIENT_ID=
-     SLACK_CLIENT_SECRET=
-     SLACK_REDIRECT_URI=
-     SLACK_ADMIN_USER_ID=
-     SLACK_WORKSPACE_NAME=
+### Setup Environment Variables
 
-     # database credentials
-     DB_USER=
-     DB_PASSWORD=
-     DB_HOST=
-     DB_PORT=
-     DB_NAME=
+1. Create .env variable file in client directory
 
-     # jwt variables
-     JWT_SECRET=
+```sh
+VITE_SERVER_URL=http://localhost:3001
+VITE_FRONTEND_URL=http://localhost:5173
+VITE_SLACK_WORKSPACE_NAME=
+```
 
-     # addresses
-     SERVER_URL=http://localhost:3001
-     FRONTEND_URL=http://localhost:5173
-    ```
+- VITE_SLACK_WORKSPACE_NAME is a string variable which is displayed in the header
 
-5.  Get client IDs, secrets and user IDs
+2. Create .env variable file in server directory
 
-    ```sh
-    SPOTIFY_CLIENT_ID and SECRET
-    ```
+```sh
+# spotify credentials
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+SPOTIFY_REDIRECT_URI=http://localhost:3001/callback
+SPOTIFY_PLAYLIST_ID=
 
-    In order to get these, go to your Spotify app and copy them from here.
-    More details here: https://developer.spotify.com/
+# slack credentials
+SLACK_CLIENT_ID=
+SLACK_CLIENT_SECRET=
+SLACK_REDIRECT_URI=**ngrok_url**/slack/oauth_redirect
+SLACK_ADMIN_USER_ID=
+SLACK_WORKSPACE_NAME=
 
-    ```sh
-    SPOTIFY_PLAYLIST_ID
-    ```
+# database credentials
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+DB_NAME=
 
-    Create a playlist on Spotify and paste the playlist id here
+# jwt variables
+JWT_SECRET=
 
-    ```sh
-    SLACK_CLIENT_ID and SECRET
-    ```
+# addresses
+SERVER_URL=http://localhost:3001
+FRONTEND_URL=http://localhost:5173
+```
 
-    Go to your Slack App and copy them here.
-    More details here: https://api.slack.com/authentication/sign-in-with-slack.
+#### Spotify
 
-    ```sh
-    SLACK_ADMIN_USER_ID
-    ```
+```sh
+SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET
+```
 
-    To get this you need to login to your Slack workspace, click on the account you intend to make the admin. Click three dots and copy the member ID.
+In order to get these credentials, go to your Spotify app and copy them from settings section. (For more details, click here: https://developer.spotify.com/)
 
-    ```sh
-    SLACK_WORKSPACE_NAME
-    ```
+```sh
+SPOTIFY_PLAYLIST_ID
+```
 
-6.  Seed file is available in the data folder. This will create 2 tables:
+Create a playlist on Spotify and paste the playlist id here
+
+#### Slack
+
+```sh
+SLACK_CLIENT_ID and SLACK_CLIENT_SECRET
+```
+
+Go to your Slack App and copy them here. (For more details, click here: https://api.slack.com/authentication/sign-in-with-slack)
+
+```sh
+SLACK_ADMIN_USER_ID
+```
+
+To get this you need to login to your Slack workspace, click on the account you intend to make the admin. Click three dots and copy the member ID.
+
+```sh
+SLACK_WORKSPACE_NAME
+```
+
+You can find the workspace name in the slack url of your workspace. It is your workspace or organisation name followed by the slack.com domain (For more details, click here: https://slack.com/intl/en-gb/help/articles/221769328-Locate-your-Slack-URL-or-ID)
+
+#### JWT
+
+```sh
+JWT_SECRET
+```
+
+This string variable is used to encode and decode/verify the JSON Web Tokens used in the backend server only allowing authorised users to access certain endpoints.
+
+### Setup Database
+
+**Note:** A seed file is available in the server/data directory. This will create 2 tables:
 
 ```sh
 tracks
@@ -216,7 +244,9 @@ refresh_tokens_table
 ```
 
 The tracks table stores songs and information about the artists as well as the unique track id and the username of the user who submitted it.
-**tracks table**:
+
+#### tracks
+
 It has 6 columns consisting of:
 
 - id: which is automatically generated when a new song is added
@@ -227,14 +257,15 @@ It has 6 columns consisting of:
 - spotify_song_id: on Spotify, click on your chosen song, and from the browser copy the highlighted bit from the example below:
   https://open.spotify.com/track/5fHXbmrx8mfOT1wfSa1Nc8
 
-**refresh tokens table**:
+#### refresh tokens
+
 The refresh tokens table stores (you guessed it!) the refresh token provided by spotify which can then be exchanged for a new access token.
 It has 2 columns consisting of:
 
 - id: which is automatically generated when a refresh token is added
 - refresh_token: refresh token provided by Spotify.
 
-7.  Told you they weren't simple.
+1.  Told you they weren't simple.
 
 ### On First Time Run
 
@@ -291,9 +322,24 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch
+
+```sh
+git checkout -b feature/AmazingFeature
+```
+
+3. Commit your Changes
+
+```sh
+git commit -m 'Add some AmazingFeature'
+```
+
+4. Push to the Branch
+
+```sh
+git push origin feature/AmazingFeature
+```
+
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
