@@ -255,7 +255,10 @@ It has 6 columns consisting of:
 - cyf_slack_username (optional): add your slack username
 - song_genre (optional): add the gene of your chosen song
 - spotify_song_id: on Spotify, click on your chosen song, and from the browser copy the highlighted bit from the example below:
+
+```sh
   https://open.spotify.com/track/5fHXbmrx8mfOT1wfSa1Nc8
+```
 
 #### refresh tokens
 
@@ -267,7 +270,7 @@ It has 2 columns consisting of:
 
 ### Installation Complete (Well done!)
 
-1.  Told you they weren't simple.
+Told you they weren't simple. Well done on getting so far! It would be rude to stop now, follow the next few steps to get the project up and running :rocket:
 
 ### On First Time Run
 
@@ -322,6 +325,13 @@ User needs to be logged in for the add songs form to be shown
 <!-- ROADMAP -->
 
 ## Roadmap
+
+- [ ] Create a scheduled script to automate the playist update process
+- [ ] Display previous daily playlists
+- [ ] Display how many users added a specific track
+- [ ] View tracks added by a specific user
+
+See the [open issues](https://github.com/m4ndycheung/cyf-stay-tuned-radio/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
