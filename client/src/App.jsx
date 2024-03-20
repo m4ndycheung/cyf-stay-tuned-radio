@@ -7,6 +7,7 @@ import AddSongForm from "./components/AddSongForm";
 import Header from "./components/header/Header";
 import Background from "./components/Background";
 import MaintenancePanel from "./components/MaintenancePanel";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [userRole, setUserRole] = useState(null);
@@ -39,6 +40,7 @@ function App() {
 
       {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
       {userRole === "admin" ? <MaintenancePanel userRole={userRole} /> : <></>}
+      <Footer />
     </>
   );
 }
