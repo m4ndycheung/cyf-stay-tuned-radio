@@ -265,9 +265,22 @@ It has 2 columns consisting of:
 - id: which is automatically generated when a refresh token is added
 - refresh_token: refresh token provided by Spotify.
 
+### Installation Complete (Well done!)
+
 1.  Told you they weren't simple.
 
 ### On First Time Run
+
+start the project
+
+Refer to Running the project locally
+
+login as admin user
+
+Under the maintenance section:
+
+click Get Access and Refresh Token
+(This will populate the refresh tokens table in the database)
 
 ### Running the project locally
 
