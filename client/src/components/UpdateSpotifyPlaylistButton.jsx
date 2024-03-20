@@ -17,7 +17,7 @@ const UpdateSpotifyPlaylistButton = ({ userRole }) => {
   }
   return (
     <>
-      <button className="btn btn-primary" onClick={handleClickSpotifyUpdate}>
+      <button className="btn btn-success" onClick={handleClickSpotifyUpdate}>
         Update Spotify Playlist
       </button>
     </>

@@ -6,8 +6,7 @@ import EmbeddedPlayer from "./components/EmbeddedPlayer";
 import AddSongForm from "./components/AddSongForm";
 import Header from "./components/header/Header";
 import Background from "./components/Background";
-import SpotifyFirstRunButton from "./components/SpotifyFirstRunButton";
-import UpdateSpotifyPlaylistButton from "./components/UpdateSpotifyPlaylistButton";
+import MaintenancePanel from "./components/MaintenancePanel";
 import Footer from "./components/footer/Footer";
 
 function App() {
@@ -40,14 +39,7 @@ function App() {
       <EmbeddedPlayer />
 
       {userRole === "admin" || userRole === "basic" ? <AddSongForm /> : <></>}
-      {userRole === "admin" ? (
-        <>
-          <UpdateSpotifyPlaylistButton userRole={userRole} />
-          <SpotifyFirstRunButton />
-        </>
-      ) : (
-        <></>
-      )}
+      {userRole === "admin" ? <MaintenancePanel userRole={userRole} /> : <></>}
       <Footer />
     </>
   );
