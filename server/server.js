@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-// const initiateLogin = require("./modules/initiateLogin");
-// const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
+const initiateLogin = require("./modules/initiateLogin");
+const getAccessAndRefreshTokens = require("./modules/getAccessAndRefreshTokens");
 const apiCallToAddSongsToDB = require("./modules/apiCallToAddSongsToDB");
 const apiCallToGetSongsFromDB = require("./modules/apiCallToGetSongsFromDB");
 const authenticationWithSlack = require("./modules/authenticationWithSlack");
@@ -35,8 +35,8 @@ app.get("/", function (req, res) {
   res.send("Hello World");
 });
 
-// app.get("/login", initiateLogin);
-// app.get("/callback", getAccessAndRefreshTokens);
+app.get("/login", initiateLogin);
+app.get("/callback", getAccessAndRefreshTokens);
 
 // public
 app.get("/songs", apiCallToGetSongsFromDB); // refactor later as module
