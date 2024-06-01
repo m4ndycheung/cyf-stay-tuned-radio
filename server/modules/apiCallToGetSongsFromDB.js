@@ -1,12 +1,10 @@
-const db = require("../data/database.js");
+const { getAllSongs } = require("../data/database.js");
 
 const apiCallToGetSongsFromDB = function (req, res) {
-  db.query(
-    "SELECT song_name, artist_name, song_genre, spotify_song_id FROM tracks"
-  )
+  getAllSongs()
     .then((result) => {
       console.log(result.rows);
-      res.status(200).json(result.rows);
+      res.status(200).json(result);
     })
     .catch((err) => {
       console.error(err);

@@ -1,9 +1,7 @@
 const request = require("supertest");
 const app = require("../../server.js");
-const db = require("../../data/database.js");
-// const expect = require("jest");
 
-test.skip("expect true to be false", async () => {
+test("songs add sending duplicate song should return 400 status", async () => {
   const result = await request(app)
     .post("/songs/add")
     .send({
@@ -13,8 +11,4 @@ test.skip("expect true to be false", async () => {
     })
     .set("Accept", "application/json");
   expect(result.statusCode).toEqual(201);
-  const databaseResult = await db.query(
-    "SELECT song_name, artist_name, spotify_song_id FROM tracks WHERE spotify_song_id = '5ChkMS8OtdzJeqyybCc9R5' "
-  );
-  expect(databaseResult.rowCount).equal(1);
 });

@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest ./vitest/*.test.js",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -21,7 +21,8 @@
     "pg": "^8.11.3",
     "querystring": "^0.2.1",
     "request": "^2.88.2",
-    "uuid": "^7.0.3"
+    "uuid": "^7.0.3",
+    "vitest": "^1.6.0"
   },
   "devDependencies": {
     "jest": "^29.7.0",

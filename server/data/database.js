@@ -9,4 +9,20 @@ const db = new Pool({
   ssl: true,
 });
 
-module.exports = db;
+const addSong = (artist_name, song_name, spotify_song_id) => {
+  const query = `INSERT INTO tracks (artist_name, song_name, spotify_song_id) VALUES ($1, $2, $3)`;
+
+  return db.query(query, [artist_name, song_name, spotify_song_id]).then(() => {
+    return true;
+  });
+};
+
+const getAllSongs = () => {
+  db.query(
+    "SELECT song_name, artist_name, song_genre, spotify_song_id FROM tracks"
+  ).then((result) => {
+    return result.rows;
+  });
+};
+
+module.exports = { addSong: addSong, getAllSongs: getAllSongs };
