@@ -10,18 +10,21 @@ const myIdentifier = createIdentifier();
 
 const exchangeAccessCodeWithSlack = async function (req, res) {
   const state = req.query.state;
+  const code = req.query.code;
+
   // console.log(`State passed to validate: ${state}`);
   if (!state || !(await myIdentifier.validate(state))) {
     return res.status(400).send("Invalid state parameter");
   }
 
   try {
-    const code = req.query.code;
+    const redirect_uri = process.env.SLACK_REDIRECT_URI;
     const token = await client.openid.connect.token({
       client_id: slack_client_id,
       client_secret: slack_client_secret,
       grant_type: "authorization_code",
       code: code,
+      redirect_uri: redirect_uri,
     });
     // console.log("My token is:", token);
     let userAccessToken = token.access_token;
