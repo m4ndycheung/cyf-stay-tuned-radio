@@ -1,3 +1,5 @@
 .env
 /node_modules
 
+project_overview.md
+.github/instructions/instructions.md
